@@ -1,0 +1,876 @@
+<!doctype html>
+<html>
+ <head>
+  <title>IntelliJ Markdown Preview</title>
+  <style>/* Reworked by IntelliJ Team The MIT License (MIT) Copyright (c) JetBrains Adapted from https://github.com/sindresorhus/github-markdown-css The MIT License (MIT) Copyright (c) Sindre Sorhus &lt;sindresorhus@gmail.com&gt; (sindresorhus.com) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ @font-face { font-family: octicons-anchor; src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff'); } body { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, freesans, sans-serif; font-size: 14px; line-height: 1.6; word-wrap: break-word; margin: 0 2em; } strong { font-weight: bold; } img { border: 0; } input { color: inherit; font: inherit; margin: 0; line-height: normal; } html input[disabled] { cursor: default; } input[type="checkbox"] { box-sizing: border-box; padding: 0; } body * { box-sizing: border-box; } input { font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; } a { text-decoration: none; } a:hover, a:active { text-decoration: underline; } hr { height: 1px; padding: 0; margin: 20px 0; border: 0 none; } hr:before { display: table; content: ""; } hr:after { display: table; clear: both; content: ""; } blockquote { margin: 0; } ul, ol { padding: 0; margin-top: 0; margin-bottom: 0; } ol ol, ul ol { list-style-type: lower-roman; } ul ul ol, ul ol ol, ol ul ol, ol ol ol { list-style-type: lower-alpha; } dd { margin-left: 0; } .octicon { font: normal normal normal 16px/1 octicons-anchor; display: inline-block; text-decoration: none; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } .octicon-link:before { content: '\f05c'; } .markdown-body &gt; *:first-child { margin-top: 0 !important; } .markdown-body &gt; *:last-child { margin-bottom: 0 !important; } .anchor { position: absolute; top: 0; left: 0; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; } .anchor:focus { outline: none; } h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; } h1 .octicon-link, h2 .octicon-link, h3 .octicon-link, h4 .octicon-link, h5 .octicon-link, h6 .octicon-link { display: none; color: #000; vertical-align: middle; } h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; } h1:hover .anchor .octicon-link, h2:hover .anchor .octicon-link, h3:hover .anchor .octicon-link, h4:hover .anchor .octicon-link, h5:hover .anchor .octicon-link, h6:hover .anchor .octicon-link { display: inline-block; } h1 { font-size: 2.2em; padding-top: 0.6em; } h1 .anchor { line-height: 1; } h2 { font-size: 1.8em; line-height: 1.2; padding-top: 0.6em; } h2 .anchor { line-height: 1.2; } h3 { font-size: 1.3em; line-height: 1; padding-top: 0.6em; } h3 .anchor { line-height: 1.2; } h4 { font-size: 1em; } h4 .anchor { line-height: 1.2; } h5 { font-size: 1em; } h5 .anchor { line-height: 1.1; } h6 { font-size: 1em; } h6 .anchor { line-height: 1.1; } p, blockquote, ul, ol, dl, table, pre { margin-top: 16px; margin-bottom: 16px; } ul, ol { padding-left: 2em; } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0; } li &gt; p { margin-top: 0; margin-bottom: 0; } dl { padding: 0; } dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } blockquote { padding: 10px 10px 10px 16px; border-left: 2px solid; border-radius: 0 3px 3px 0; } blockquote &gt; :first-child { margin-top: 0; } blockquote &gt; :last-child { margin-bottom: 0; } table { display: block; width: 100%; overflow: auto; word-break: normal; border-collapse: collapse; border-spacing: 0; font-size: 1em; } table th { font-weight: bold; } table th, table td { padding: 6px 13px; background: transparent; } table tr { border-top: 1px solid; } img { max-width: 100%; box-sizing: border-box; } code { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } pre &gt; code { padding: 0; margin: 0; font-size: 100%; word-break: normal; white-space: pre; background: transparent; border: 0; } .highlight { margin-bottom: 16px; } .highlight pre, pre { font: 0.85em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 16px; overflow: auto; line-height: 1.45; border-radius: 3px; } pre code { display: inline; max-width: initial; padding: 0; margin: 0; overflow: initial; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } pre code:before, pre code:after { content: normal; } kbd { font: 0.9em "JetBrains Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace; padding: 0.2em 0.4em; margin: 2px; border-radius: 3px; } .task-list-item { list-style-type: none; } .task-list-item + .task-list-item { margin-top: 3px; } .task-list-item input { margin: 0 0.35em 0.25em -0.6em; vertical-align: middle; } :checked + .radio-label { z-index: 1; position: relative; } span.user-del { text-decoration: line-through; } ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; } ::-webkit-scrollbar-track:vertical { -webkit-box-shadow: -1px 0 0 #ededed; } ::-webkit-scrollbar-track { background-color: transparent; } ::-webkit-scrollbar { width: 6px; }</style>
+  <style>body { background-color: rgba(255, 255, 255, 255.0); font-size: 15px !important; } body, p, blockquote, ul, ol, dl, table, pre, code, tr { color: rgba(8, 8, 8, 255.0); } a { color: rgba(49, 95, 189, 255.0); } table td, table th { border: 1px solid rgba(235, 236, 240, 255.0); } hr { background-color: rgba(235, 236, 240, 255.0); } kbd, tr { border: 1px solid rgba(235, 236, 240, 255.0); } h6 { color: rgba(129, 133, 148, 255.0); } blockquote { border-left: 2px solid rgba(49, 95, 189, 0.4); } blockquote, code, pre { background-color: rgba(212, 222, 231, 0.24705882352941178); } ::-webkit-scrollbar { width: 10.0px; height: 10.0px; background-color: rgba(245, 245, 245, 1.0); } ::-webkit-scrollbar-track { background-color:rgba(128, 128, 128, 0.0); } ::-webkit-scrollbar-track:hover { background-color:rgba(128, 128, 128, 0.0); } ::-webkit-scrollbar-thumb { background-color:rgba(115, 115, 115, 0.2); border-radius:0.0px; border-width: 1.0px; border-style: solid; border-color: rgba(128, 128, 128, 0.0); background-clip: padding-box; outline: 1px solid rgba(89, 89, 89, 0.2); outline-offset: -1.0px; } ::-webkit-scrollbar-thumb:hover { background-color:rgba(115, 115, 115, 0.2784313725490196); border-radius:0.0px; border-width: 1.0px; border-style: solid; border-color: rgba(128, 128, 128, 0.0); background-clip: padding-box; outline: 1px solid rgba(89, 89, 89, 0.2784313725490196); outline-offset: -1.0px; } ::-webkit-scrollbar-button { display:none; } ::-webkit-scrollbar-corner { background-color: rgba(245, 245, 245, 1.0); }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .code-fence-highlighter-copy-button { display: flex; position: absolute; float: left; margin-left: -1em; margin-top: -1em; } .code-fence-highlighter-copy-button-icon { max-width: 1em; } .code-fence:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon.png"); } .code-fence:hover .code-fence-highlighter-copy-button:hover .code-fence-highlighter-copy-button-icon { /*noinspection CssUnknownTarget*/ content: url("copy-button-copy-icon-hovered.png"); cursor: pointer; }</style>
+  <style>/* Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. */ .run-icon &gt; img { max-width: 1em; vertical-align: text-top; margin-right: 0.3em; } .code-block { position: absolute; left: 1em; } .hidden { display: none; }</style>
+ </head>
+ <body>
+  <div md-src-pos="0..24493">
+   <style type="text/css">
+    ol { list-style-type: upper-alpha; }
+</style>
+   <h3 id="div-styletext-align-center-font-size-32px-background-color-242424-color-white-padding-14px-line-height-1border-radius20pxpytaniadiv" md-src-pos="75..232">
+    <div style="text-align: center; font-size: 32px; background-color: rgb(36, 36, 36); color: white; padding: 14px; line-height: 1; border-radius: 20px;">
+     Pytania
+    </div></h3>
+   <h3 id="div-stylefont-size-32pxspis-treścidiv" md-src-pos="234..284">
+    <div style="font-size: 32px;">
+     Spis Treści
+    </div></h3>
+   <ul md-src-pos="285..820">
+    <li md-src-pos="285..327"><a href="#rozdzial_1" md-src-pos="287..327">Rozdział 1 - Wprowadzenie</a></li>
+    <li md-src-pos="328..393"><a href="#rozdzial_2" md-src-pos="330..393">Rozdział 2 - Typy danych, instrukcje i wyrażenia</a></li>
+    <li md-src-pos="394..431"><a href="#rozdzial_3" md-src-pos="396..431">Rozdział 3 - Funkcje</a></li>
+    <li md-src-pos="432..482"><a href="#rozdzial_4" md-src-pos="434..482">Rozdział 4 - Operacje na liczbach</a></li>
+    <li md-src-pos="483..552"><a href="#rozdzial_5" md-src-pos="485..552">Rozdział 5 - Operacje na znakach i łańcuchach znaków</a></li>
+    <li md-src-pos="553..605"><a href="#rozdzial_6" md-src-pos="555..605">Rozdział 6 - Operacje na kolekcjach</a></li>
+    <li md-src-pos="606..652"><a href="#rozdzial_7" md-src-pos="608..652">Rozdział 7 - Obsługa wyjątków</a></li>
+    <li md-src-pos="653..702"><a href="#rozdzial_8" md-src-pos="655..702">Rozdział 8 - Operacje na plikach</a></li>
+    <li md-src-pos="703..783"><a href="#rozdzial_9" md-src-pos="705..783">Rozdział 9 - Tworzenie graficznego interfejsu użytkownika (GUI)</a></li>
+    <li md-src-pos="784..820"><a href="#rozdzial_10" md-src-pos="786..820">Rozdział 10 - Inne</a></li>
+   </ul>
+   <h3 id="a-idrozdzial1arozdział-1---wprowadzenie" md-src-pos="822..874"><a id="rozdzial_1"></a>Rozdział 1 - Wprowadzenie</h3>
+   <p md-src-pos="875..888"><strong md-src-pos="875..888">Pytanie 1</strong></p>
+   <p md-src-pos="890..911"><span md-src-pos="890..910">Python jest językiem</span>:</p>
+   <ol md-src-pos="913..1017">
+    <li md-src-pos="913..936">Statycznie typowanym</li>
+    <li md-src-pos="937..961">Dynamicznie typowanym</li>
+    <li md-src-pos="962..995">Odpowiedzi A i B są prawidłowe</li>
+    <li md-src-pos="996..1017">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="1019..1032"><strong md-src-pos="1019..1032">Pytanie 2</strong></p>
+   <p md-src-pos="1034..1057"><span md-src-pos="1034..1050">Co oznacza skrót</span> <em md-src-pos="1051..1056">PEP</em><span md-src-pos="1056..1057">?</span></p>
+   <ol md-src-pos="1059..1188">
+    <li md-src-pos="1059..1092"><em md-src-pos="1062..1092">Python Enhancement Proposals</em></li>
+    <li md-src-pos="1093..1122"><em md-src-pos="1096..1122">Python Enhancement Plans</em></li>
+    <li md-src-pos="1123..1160"><em md-src-pos="1126..1160">Python Environmental Programming</em></li>
+    <li md-src-pos="1161..1188"><em md-src-pos="1164..1188">Python Eye Programming</em></li>
+   </ol>
+   <p md-src-pos="1190..1203"><strong md-src-pos="1190..1203">Pytanie 3</strong></p>
+   <p md-src-pos="1205..1222"><span md-src-pos="1205..1214">Czym jest</span> <em md-src-pos="1215..1221">PEP8</em><span md-src-pos="1221..1222">?</span></p>
+   <ol md-src-pos="1224..1555">
+    <li md-src-pos="1224..1300">To jeden z pakietów występujących w standardowej bibliotece języka Python</li>
+    <li md-src-pos="1301..1385">To zbiór ośmiu, najważniejszych pakietów ze standardowej biblioteki języka Python</li>
+    <li md-src-pos="1386..1462">To dokument opisujący standardy dotyczące stylu kodowania w języku Python</li>
+    <li md-src-pos="1463..1555">To pseudonim jednego z głównych programistów odpowiedzialnych za rozwijanie języka Python</li>
+   </ol>
+   <p md-src-pos="1557..1570"><strong md-src-pos="1557..1570">Pytanie 4</strong></p>
+   <p md-src-pos="1572..1589"><span md-src-pos="1572..1581">Czym jest</span> <em md-src-pos="1582..1588">PATH</em><span md-src-pos="1588..1589">?</span></p>
+   <ol md-src-pos="1591..1867">
+    <li md-src-pos="1591..1696">Jest to zmienna środowiskowa określająca zestaw katalogów, w których znajdują się programy wykonywalne</li>
+    <li md-src-pos="1697..1745">Jest to ścieżka do interpretera języka Python</li>
+    <li md-src-pos="1746..1812">Jest to jeden z pakietów w stadardowej bibliotece języka Python</li>
+    <li md-src-pos="1813..1867">Jest to skrót od <em md-src-pos="1833..1867">Python Access Terminal Hierarchy</em></li>
+   </ol>
+   <p md-src-pos="1869..1882"><strong md-src-pos="1869..1882">Pytanie 5</strong></p>
+   <p md-src-pos="1884..1920"><span md-src-pos="1884..1920">Czym jest interpreter języka Python?</span></p>
+   <ol md-src-pos="1922..2315">
+    <li md-src-pos="1922..2013">Jest to program odpowiedzialny za wykonywanie kodu źródłowego napisanego w języku Python</li>
+    <li md-src-pos="2014..2112">Jest to narzędzie środowiska PyCharm, które tłumaczy kod źródłowy jezyka Python na język ludzki</li>
+    <li md-src-pos="2113..2221">Jest to program odpowiedzialny za tłumaczenie kodu źródłowego napisanego w języku Python na kod maszynowy</li>
+    <li md-src-pos="2222..2315">Jest to stanowisko w firmie, w ramach którego tłumaczy się kod źródłowy na język biznesowy</li>
+   </ol>
+   <h3 id="a-idrozdzial2arozdział-2---typy-danych-instrukcje-i-wyrażenia" md-src-pos="2317..2392"><a id="rozdzial_2"></a>Rozdział 2 - Typy danych, instrukcje i wyrażenia</h3>
+   <p md-src-pos="2393..2406"><strong md-src-pos="2393..2406">Pytanie 1</strong></p>
+   <p md-src-pos="2408..2545"><span md-src-pos="2408..2440">Programista chce przypisać cyfrę</span> <code md-src-pos="2441..2444">2</code> <span md-src-pos="2445..2464">do trzech zmiennych</span> <code md-src-pos="2465..2474">a, b, c</code> <span md-src-pos="2475..2495">w jednej linii kodu.</span> <span md-src-pos="2496..2519">Które z przedstawionych</span> <span md-src-pos="2521..2545">rozwiązań jest poprawne?</span></p>
+   <ol md-src-pos="2547..2637">
+    <li md-src-pos="2547..2563"><code md-src-pos="2550..2563">a, b, c = 2</code></li>
+    <li md-src-pos="2564..2582"><code md-src-pos="2567..2582">a = b = c = 2</code></li>
+    <li md-src-pos="2583..2605"><code md-src-pos="2586..2605">a, b, c = 2, 2, 2</code></li>
+    <li md-src-pos="2606..2637">Odpowiedzi B i C są poprawne</li>
+   </ol>
+   <p md-src-pos="2639..2652"><strong md-src-pos="2639..2652">Pytanie 2</strong></p>
+   <p md-src-pos="2654..2798"><span md-src-pos="2654..2741">Programista chce przeiterować po kluczach i wartościach słownika z wykorzystaniem pętli</span> <code md-src-pos="2742..2747">for</code><span md-src-pos="2747..2748">.</span> <span md-src-pos="2749..2772">Które z przedstawionych</span> <span md-src-pos="2774..2798">rozwiązań jest poprawne?</span></p>
+   <ol md-src-pos="2800..2926">
+    <li md-src-pos="2800..2842"><code md-src-pos="2803..2842">for (key, value) in some_dict.items()</code></li>
+    <li md-src-pos="2843..2877"><code md-src-pos="2846..2877">for (key, value) in some_dict</code></li>
+    <li md-src-pos="2878..2904"><code md-src-pos="2881..2904">for pair in some_dict</code></li>
+    <li md-src-pos="2905..2926">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="2928..2941"><strong md-src-pos="2928..2941">Pytanie 3</strong></p>
+   <p md-src-pos="2943..3186"><span md-src-pos="2943..2958">Dana jest lista</span> <code md-src-pos="2959..2986">numbers = [1, 2, 3, 4, 5]</code><span md-src-pos="2986..2987">.</span> <span md-src-pos="2988..3049">Programista chce przypisać pierwszy element listy do zmiennej</span> <code md-src-pos="3050..3053">a</code><span md-src-pos="3053..3054">,</span> <span md-src-pos="3055..3062">ostatni</span> <span md-src-pos="3064..3075">do zmiennej</span> <code md-src-pos="3076..3079">c</code><span md-src-pos="3079..3080">,</span> <span md-src-pos="3081..3132">natomiast środkowe trzy w postaci listy do zmiennej</span> <code md-src-pos="3133..3136">b</code><span md-src-pos="3136..3137">.</span> <span md-src-pos="3138..3186">Które z przedstawionych rozwiązań jest poprawne?</span></p>
+   <ol md-src-pos="3188..3298">
+    <li md-src-pos="3188..3210"><code md-src-pos="3191..3210">a, b, c = numbers</code></li>
+    <li md-src-pos="3211..3234"><code md-src-pos="3214..3234">a, *b, c = numbers</code></li>
+    <li md-src-pos="3235..3275"><code md-src-pos="3238..3275">a_first, c_last, b_middle = numbers</code></li>
+    <li md-src-pos="3276..3298"><code md-src-pos="3279..3298">a, _, c = numbers</code></li>
+   </ol>
+   <p md-src-pos="3300..3313"><strong md-src-pos="3300..3313">Pytanie 4</strong></p>
+   <p md-src-pos="3315..3387"><span md-src-pos="3315..3386">Wybierz poprawny zapis operacji przypisania z aktualizacją dla mnożenia</span>:</p>
+   <ol md-src-pos="3389..3478">
+    <li md-src-pos="3389..3413"><code md-src-pos="3392..3413">number = number * 1</code></li>
+    <li md-src-pos="3414..3439"><code md-src-pos="3417..3439">number == number * 1</code></li>
+    <li md-src-pos="3440..3456"><code md-src-pos="3443..3456">number *= 1</code></li>
+    <li md-src-pos="3457..3478"><code md-src-pos="3460..3478">number.update(1)</code></li>
+   </ol>
+   <p md-src-pos="3480..3493"><strong md-src-pos="3480..3493">Pytanie 5</strong></p>
+   <p md-src-pos="3495..3560"><span md-src-pos="3495..3517">Czy kod spod intrukcji</span> <code md-src-pos="3518..3541">if not True and False</code> <span md-src-pos="3542..3560">zostanie wykonany?</span></p>
+   <ol md-src-pos="3562..3575">
+    <li md-src-pos="3562..3568">Tak</li>
+    <li md-src-pos="3569..3575">Nie</li>
+   </ol>
+   <p md-src-pos="3577..3590"><strong md-src-pos="3577..3590">Pytanie 6</strong></p>
+   <p md-src-pos="3592..3688"><span md-src-pos="3592..3607">Dane są zmienne</span> <code md-src-pos="3608..3615">x = 1</code> <span md-src-pos="3616..3617">i</span> <code md-src-pos="3618..3625">y = 2</code><span md-src-pos="3625..3626">.</span> <span md-src-pos="3627..3649">Czy kod spod intrukcji</span> <code md-src-pos="3650..3669">if x == y or True</code> <span md-src-pos="3670..3688">zostanie wykonany?</span></p>
+   <ol md-src-pos="3690..3703">
+    <li md-src-pos="3690..3696">Tak</li>
+    <li md-src-pos="3697..3703">Nie</li>
+   </ol>
+   <p md-src-pos="3705..3718"><strong md-src-pos="3705..3718">Pytanie 7</strong></p>
+   <p md-src-pos="3720..3826"><span md-src-pos="3720..3735">Dane są zmienne</span> <code md-src-pos="3736..3743">x = 1</code> <span md-src-pos="3744..3745">i</span> <code md-src-pos="3746..3753">y = 2</code><span md-src-pos="3753..3754">.</span> <span md-src-pos="3755..3809">Co zostanie wyświetlone w konsoli po wywołaniu funkcji</span> <code md-src-pos="3810..3825">print(x is y)</code><span md-src-pos="3825..3826">?</span></p>
+   <ol md-src-pos="3828..3870">
+    <li md-src-pos="3828..3837"><code md-src-pos="3831..3837">True</code></li>
+    <li md-src-pos="3838..3848"><code md-src-pos="3841..3848">False</code></li>
+    <li md-src-pos="3849..3858"><code md-src-pos="3852..3858">None</code></li>
+    <li md-src-pos="3859..3870"><code md-src-pos="3862..3870">[1, 2]</code></li>
+   </ol>
+   <p md-src-pos="3872..3885"><strong md-src-pos="3872..3885">Pytanie 8</strong></p>
+   <p md-src-pos="3887..4015"><span md-src-pos="3887..3902">Dane są zmienne</span> <code md-src-pos="3903..3922">a, b, c = 1, 2, 3</code><span md-src-pos="3922..3923">.</span> <span md-src-pos="3924..3959">Jaki będzie wynik zdania logicznego</span> <code md-src-pos="3960..4014">((a &gt; b) and (c &lt; a)) or (not (b == a) and (c &lt;= b))</code><span md-src-pos="4014..4015">?</span></p>
+   <ol md-src-pos="4017..4037">
+    <li md-src-pos="4017..4026"><code md-src-pos="4020..4026">True</code></li>
+    <li md-src-pos="4027..4037"><code md-src-pos="4030..4037">False</code></li>
+   </ol>
+   <p md-src-pos="4039..4052"><strong md-src-pos="4039..4052">Pytanie 9</strong></p>
+   <p md-src-pos="4054..4105"><span md-src-pos="4054..4104">Wybierz poprawną formę operatora trójargumentowego</span>:</p>
+   <ol md-src-pos="4107..4284">
+    <li md-src-pos="4107..4167"><code md-src-pos="4110..4167">result = value_if_true if condition else value_if_false</code></li>
+    <li md-src-pos="4168..4228"><code md-src-pos="4171..4228">result = value_if_false if condition else value_if_true</code></li>
+    <li md-src-pos="4229..4262">Odpowiedzi A i B są prawidłowe</li>
+    <li md-src-pos="4263..4284">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="4286..4300"><strong md-src-pos="4286..4300">Pytanie 10</strong></p>
+   <p md-src-pos="4302..4421"><span md-src-pos="4302..4319">Dana jest zmienna</span> <code md-src-pos="4320..4328">x = 13</code><span md-src-pos="4328..4329">.</span> <span md-src-pos="4330..4359">Jaką wartość przyjmie zmienna</span> <code md-src-pos="4360..4368">result</code> <span md-src-pos="4369..4377">dla kodu</span> <code md-src-pos="4378..4420">result = "Even" if x % 2 == 0 else "Odd"</code><span md-src-pos="4420..4421">?</span></p>
+   <ol md-src-pos="4423..4462">
+    <li md-src-pos="4423..4432"><code md-src-pos="4426..4432">True</code></li>
+    <li md-src-pos="4433..4443"><code md-src-pos="4436..4443">False</code></li>
+    <li md-src-pos="4444..4453"><code md-src-pos="4447..4453">Even</code></li>
+    <li md-src-pos="4454..4462"><code md-src-pos="4457..4462">Odd</code></li>
+   </ol>
+   <p md-src-pos="4464..4478"><strong md-src-pos="4464..4478">Pytanie 11</strong></p>
+   <p md-src-pos="4480..4582"><span md-src-pos="4480..4497">Dana jest zmienna</span> <code md-src-pos="4498..4505">x = 7</code><span md-src-pos="4505..4506">.</span> <span md-src-pos="4507..4548">Czy zostanie wykonany kod spod instrukcji</span> <code md-src-pos="4549..4581">if isinstance(x, (int, float))</code><span md-src-pos="4581..4582">?</span></p>
+   <ol md-src-pos="4584..4597">
+    <li md-src-pos="4584..4590">Tak</li>
+    <li md-src-pos="4591..4597">Nie</li>
+   </ol>
+   <p md-src-pos="4599..4613"><strong md-src-pos="4599..4613">Pytanie 12</strong></p>
+   <p md-src-pos="4615..4638"><span md-src-pos="4615..4637">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="4640..4735">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="eCA9IDEKCm1hdGNoIHg6CiAgIGNhc2UgMDoKICAgICAgIHByaW50KCJ4ID0gMCIpCiAgIGNhc2UgMToKICAgICAgIHByaW50KCJ4ID0gMSIp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="4640..4735"><span md-src-pos="4640..4650"></span><span md-src-pos="4650..4656">x = <span style="color: rgb(23, 80, 235);">1</span></span>
+<span md-src-pos="4656..4657"></span>
+<span md-src-pos="4657..4666">match x:</span>
+<span md-src-pos="4666..4677">   case <span style="color: rgb(23, 80, 235);">0</span>:</span>
+<span md-src-pos="4677..4699">       print(<span style="color: rgb(6, 125, 23);">"x = 0"</span>)</span>
+<span md-src-pos="4699..4710">   case <span style="color: rgb(23, 80, 235);">1</span>:</span>
+<span md-src-pos="4710..4732">       print(<span style="color: rgb(6, 125, 23);">"x = 1"</span>)</span>
+<span md-src-pos="4732..4733"></span><span md-src-pos="4732..4735"></span></code></pre>
+   <p md-src-pos="4737..4789"><span md-src-pos="4737..4789">Co zostanie wyświetlone w konsoli po jego wykonaniu?</span></p>
+   <ol md-src-pos="4791..4833">
+    <li md-src-pos="4791..4801"><code md-src-pos="4794..4801">x = 0</code></li>
+    <li md-src-pos="4802..4812"><code md-src-pos="4805..4812">x = 1</code></li>
+    <li md-src-pos="4813..4822"><code md-src-pos="4816..4822">True</code></li>
+    <li md-src-pos="4823..4833"><code md-src-pos="4826..4833">False</code></li>
+   </ol>
+   <p md-src-pos="4835..4849"><strong md-src-pos="4835..4849">Pytanie 13</strong></p>
+   <p md-src-pos="4851..4888"><span md-src-pos="4851..4877">Od kiedy jest liczony czas</span> <em md-src-pos="4878..4887">Unixowy</em><span md-src-pos="4887..4888">?</span></p>
+   <ol md-src-pos="4890..5022">
+    <li md-src-pos="4890..4916">Od 1 stycznia 2000 roku</li>
+    <li md-src-pos="4917..4943">Od 1 stycznia 1970 roku</li>
+    <li md-src-pos="4944..4970">Od 1 stycznia 1900 roku</li>
+    <li md-src-pos="4971..5022">Od powstania pierwszej dystrybucji systemu Linux</li>
+   </ol>
+   <p md-src-pos="5024..5038"><strong md-src-pos="5024..5038">Pytanie 14</strong></p>
+   <p md-src-pos="5040..5055"><span md-src-pos="5040..5055">Co to jest UTC?</span></p>
+   <ol md-src-pos="5057..5383">
+    <li md-src-pos="5057..5183">Jest to skrót od tak zwanego uniwersalnego czasu koordynowanego i odnosi się do czasu na długości geograficznej zero stopni</li>
+    <li md-src-pos="5184..5271">Jest to skrót od nazwy strefy czasowej obowiązującej w Stanach Zjednoczonych Ameryki</li>
+    <li md-src-pos="5272..5361">Jest to główny pakiet standardowej biblioteki języka Python do pracy z datami i czasem</li>
+    <li md-src-pos="5362..5383">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="5385..5399"><strong md-src-pos="5385..5399">Pytanie 15</strong></p>
+   <p md-src-pos="5401..5424"><span md-src-pos="5401..5423">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="5426..5640">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKCiMgSW5wdXQgZGF0ZSBpbiB0aGUgZm9ybWF0ICJ5eXl5LW1tLWRkIgppbnB1dF9kYXRlID0gIjIwMjAtMDEtMTIiCgojIENvbnZlcnQgdGhlIGlucHV0IGRhdGUgdG8gYSBkYXRldGltZSBvYmplY3QKZGF0ZXRpbWVfb2JqID0gZGF0ZXRpbWUuc3RycHRpbWUoaW5wdXRfZGF0ZSwgIiVZLSVtLSVkIik=">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="5426..5640"><span md-src-pos="5426..5436"></span><span md-src-pos="5436..5466"><span style="color: rgb(0, 51, 179);">from</span> datetime <span style="color: rgb(0, 51, 179);">import</span> datetime</span>
+<span md-src-pos="5466..5467"></span>
+<span md-src-pos="5467..5507"><span style="color: rgb(140, 140, 140);"># Input date in the format "yyyy-mm-dd"</span></span>
+<span md-src-pos="5507..5533">input_date = <span style="color: rgb(6, 125, 23);">"2020-01-12"</span></span>
+<span md-src-pos="5533..5534"></span>
+<span md-src-pos="5534..5580"><span style="color: rgb(140, 140, 140);"># Convert the input date to a datetime object</span></span>
+<span md-src-pos="5580..5637">datetime_obj = datetime.strptime(input_date, <span style="color: rgb(6, 125, 23);">"%Y-%m-%d"</span>)</span>
+<span md-src-pos="5637..5638"></span><span md-src-pos="5637..5640"></span></code></pre>
+   <p md-src-pos="5642..5759"><span md-src-pos="5642..5679">Programista chce przekonwertować datę</span> <code md-src-pos="5680..5692">2020-01-12</code> <span md-src-pos="5693..5703">do formatu</span> <code md-src-pos="5704..5716">12-01-2020</code><span md-src-pos="5716..5717">.</span> <span md-src-pos="5718..5759">Które z podanych rozwiązań jest poprawne?</span></p>
+   <ol md-src-pos="5761..5953">
+    <li md-src-pos="5761..5813"><code md-src-pos="5764..5813">output_date = datetime_obj.strftime("%d.%m.%Y")</code></li>
+    <li md-src-pos="5814..5866"><code md-src-pos="5817..5866">output_date = datetime_obj.strftime(input_date)</code></li>
+    <li md-src-pos="5867..5921"><code md-src-pos="5870..5921">output_date = datetime_obj.strftime("12.01.2020")</code></li>
+    <li md-src-pos="5922..5953">Odpowiedzi A i C są poprawne</li>
+   </ol>
+   <h3 id="a-idrozdzial3arozdział-3---funkcje" md-src-pos="5955..6002"><a id="rozdzial_3"></a>Rozdział 3 - Funkcje</h3>
+   <p md-src-pos="6003..6016"><strong md-src-pos="6003..6016">Pytanie 1</strong></p>
+   <p md-src-pos="6018..6097"><span md-src-pos="6018..6087">Jaka jest poprawna forma funkcji anonimowej korzystającej z wyrażenia</span> <code md-src-pos="6088..6096">lambda</code><span md-src-pos="6096..6097">?</span></p>
+   <ol md-src-pos="6099..6240">
+    <li md-src-pos="6099..6133"><code md-src-pos="6102..6133">lambda parameters: expression</code></li>
+    <li md-src-pos="6134..6167"><code md-src-pos="6137..6167">lambda expression parameters</code></li>
+    <li md-src-pos="6168..6203"><code md-src-pos="6171..6203">lambda(parameters): expression</code></li>
+    <li md-src-pos="6204..6240"><code md-src-pos="6207..6240">lambda parameters -&gt; expression</code></li>
+   </ol>
+   <p md-src-pos="6242..6255"><strong md-src-pos="6242..6255">Pytanie 2</strong></p>
+   <p md-src-pos="6257..6335"><span md-src-pos="6257..6335">Jaka jest poprawna forma funkcji anonimowej obliczającej sumę kwadratów liczb?</span></p>
+   <ol md-src-pos="6337..6489">
+    <li md-src-pos="6337..6384"><code md-src-pos="6340..6384">lambda nums: sum([num**2 for num in nums])</code></li>
+    <li md-src-pos="6385..6426"><code md-src-pos="6388..6426">lambda sum([num**2 for num in nums])</code></li>
+    <li md-src-pos="6427..6467"><code md-src-pos="6430..6467">lambda nums: num**2 for num in nums</code></li>
+    <li md-src-pos="6468..6489">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="6491..6504"><strong md-src-pos="6491..6504">Pytanie 3</strong></p>
+   <p md-src-pos="6506..6527"><span md-src-pos="6506..6527">Czym jest rekurencja?</span></p>
+   <ol md-src-pos="6529..6945">
+    <li md-src-pos="6529..6604">To sposób na ukrycie implementacji algorytmu przed innymi programistami.</li>
+    <li md-src-pos="6605..6675">To technika optymalizacji wydajności kodu w językach programowania.</li>
+    <li md-src-pos="6676..6821">To metoda unikania używania pętli w kodzie i zastępowania ich przez wywołania funkcji, co sprawia, że program jest bardziej wydajny i szybszy.</li>
+    <li md-src-pos="6822..6945">To koncepcja programowania, w której funkcja wywołuje samą siebie bezpośrednio lub pośrednio w czasie swojego działania.</li>
+   </ol>
+   <p md-src-pos="6947..6960"><strong md-src-pos="6947..6960">Pytanie 4</strong></p>
+   <p md-src-pos="6962..6985"><span md-src-pos="6962..6984">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="6987..7135">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIHN1bSh4KToKICAgaWYgbm90IHg6CiAgICAgICByZXR1cm4gMAogICBlbHNlOgogICAgICAgcmV0dXJuIHhbMF0gKyBzdW0oeFsxOl0pCgpudW1iZXJzID0gWzEsIDIsIDMsIDQsIDVdCnMgPSBzdW0obnVtYmVycykKcHJpbnQocyk=">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="6987..7135"><span md-src-pos="6987..6997"></span><span md-src-pos="6997..7009"><span style="color: rgb(0, 51, 179);">def</span> sum(x):</span>
+<span md-src-pos="7009..7022">   <span style="color: rgb(0, 51, 179);">if</span> <span style="color: rgb(0, 51, 179);">not</span> x:</span>
+<span md-src-pos="7022..7038">       <span style="color: rgb(0, 51, 179);">return</span> <span style="color: rgb(23, 80, 235);">0</span></span>
+<span md-src-pos="7038..7047">   <span style="color: rgb(0, 51, 179);">else</span>:</span>
+<span md-src-pos="7047..7079">       <span style="color: rgb(0, 51, 179);">return</span> x[<span style="color: rgb(23, 80, 235);">0</span>] + sum(x[<span style="color: rgb(23, 80, 235);">1</span>:])</span>
+<span md-src-pos="7079..7080"></span>
+<span md-src-pos="7080..7106">numbers = [<span style="color: rgb(23, 80, 235);">1</span>, <span style="color: rgb(23, 80, 235);">2</span>, <span style="color: rgb(23, 80, 235);">3</span>, <span style="color: rgb(23, 80, 235);">4</span>, <span style="color: rgb(23, 80, 235);">5</span>]</span>
+<span md-src-pos="7106..7123">s = sum(numbers)</span>
+<span md-src-pos="7123..7132">print(s)</span>
+<span md-src-pos="7132..7133"></span><span md-src-pos="7132..7135"></span></code></pre>
+   <p md-src-pos="7137..7195"><span md-src-pos="7137..7195">Co zostanie wyświetlone w konsoli w wyniku jego wykonania?</span></p>
+   <ol md-src-pos="7197..7255">
+    <li md-src-pos="7197..7217"><code md-src-pos="7200..7217">[1, 2, 3, 4, 5]</code></li>
+    <li md-src-pos="7218..7240"><code md-src-pos="7221..7240">[1, 3, 6, 10, 15]</code></li>
+    <li md-src-pos="7241..7248"><code md-src-pos="7244..7248">15</code></li>
+    <li md-src-pos="7249..7255"><code md-src-pos="7252..7255">0</code></li>
+   </ol>
+   <p md-src-pos="7257..7270"><strong md-src-pos="7257..7270">Pytanie 5</strong></p>
+   <p md-src-pos="7272..7300"><span md-src-pos="7272..7300">Czym jest dekorator funkcji?</span></p>
+   <ol md-src-pos="7302..7767">
+    <li md-src-pos="7302..7461">To funkcja, która przyjmuje inną funkcję jako argument i dodaje do niej funkcjonalność lub modyfikuje jej zachowanie, bez konieczności zmiany samej funkcji.</li>
+    <li md-src-pos="7462..7558">To specjalne komentarze, które mogą być wykorzystywane jedynie w celu dokumentowania funkcji.</li>
+    <li md-src-pos="7559..7688">To syntaktyczne uproszczenie definicji funkcji, które pozwala korzystać z tradycyjnych funkcji tak, jak z funkcji anonimowych.</li>
+    <li md-src-pos="7689..7767">To technika rozbudowywania funkcjonalności funkcji w definicji tej funkcji.</li>
+   </ol>
+   <h3 id="a-idrozdzial4arozdział-4---operacje-na-liczbach" md-src-pos="7769..7829"><a id="rozdzial_4"></a>Rozdział 4 - Operacje na liczbach</h3>
+   <p md-src-pos="7830..7843"><strong md-src-pos="7830..7843">Pytanie 1</strong></p>
+   <p md-src-pos="7845..7948"><span md-src-pos="7845..7861">Dana jest liczba</span> <code md-src-pos="7862..7876">pi = 3.14159</code><span md-src-pos="7876..7877">.</span> <span md-src-pos="7878..7890">Wybierz kod,</span> <span md-src-pos="7891..7947">który pozwoli zaokrąglić ją do dwóch miejsc po przecinku</span>:</p>
+   <ol md-src-pos="7950..8028">
+    <li md-src-pos="7950..7967"><code md-src-pos="7953..7967">round(pi, 2)</code></li>
+    <li md-src-pos="7968..7993"><code md-src-pos="7971..7993">decimal(pi, round=2)</code></li>
+    <li md-src-pos="7994..8010"><code md-src-pos="7997..8010">pi.round(2)</code></li>
+    <li md-src-pos="8011..8028"><code md-src-pos="8014..8028">float(pi, 2)</code></li>
+   </ol>
+   <p md-src-pos="8030..8043"><strong md-src-pos="8030..8043">Pytanie 2</strong></p>
+   <p md-src-pos="8045..8181"><span md-src-pos="8045..8061">Dana jest liczba</span> <code md-src-pos="8062..8076">pi = 3.14159</code><span md-src-pos="8076..8077">.</span> <span md-src-pos="8078..8090">Wybierz kod,</span> <span md-src-pos="8091..8110">który wykorzystując</span> <code md-src-pos="8111..8121">f-String</code> <span md-src-pos="8122..8155">pozwoli na wyświetlenie w konsoli</span> <code md-src-pos="8156..8180">Pi is equal to 3.14159</code>:</p>
+   <ol md-src-pos="8183..8317">
+    <li md-src-pos="8183..8216"><code md-src-pos="8186..8216">print("Pi is equal to {pi}")</code></li>
+    <li md-src-pos="8217..8251"><code md-src-pos="8220..8251">print(f"Pi is equal to {pi}")</code></li>
+    <li md-src-pos="8252..8284"><code md-src-pos="8255..8284">print("Pi is equal to %pi")</code></li>
+    <li md-src-pos="8285..8317"><code md-src-pos="8288..8317">print("Pi is equal to $pi")</code></li>
+   </ol>
+   <p md-src-pos="8319..8332"><strong md-src-pos="8319..8332">Pytanie 3</strong></p>
+   <p md-src-pos="8334..8529"><span md-src-pos="8334..8350">Dana jest liczba</span> <code md-src-pos="8351..8365">pi = 3.14159</code><span md-src-pos="8365..8366">.</span> <span md-src-pos="8367..8379">Wybierz kod,</span> <span md-src-pos="8380..8447">który wykorzystując formatowanie liczb zmiennoprzecinkowych pozwoli</span> <span md-src-pos="8449..8481">na wyświetlenie w konsoli liczby</span> <code md-src-pos="8482..8486">pi</code> <span md-src-pos="8487..8528">zaokrąglonej do dwóch miejsc po przecinku</span>:</p>
+   <ol md-src-pos="8531..8638">
+    <li md-src-pos="8531..8558"><code md-src-pos="8534..8558">print("{pi:round.2f}")</code></li>
+    <li md-src-pos="8559..8582"><code md-src-pos="8562..8582">print(f"{pi}:.2f")</code></li>
+    <li md-src-pos="8583..8606"><code md-src-pos="8586..8606">print(f"{pi:.2f}")</code></li>
+    <li md-src-pos="8607..8638"><code md-src-pos="8610..8638">print(f"{format(pi:.2f)}")</code></li>
+   </ol>
+   <p md-src-pos="8640..8653"><strong md-src-pos="8640..8653">Pytanie 4</strong></p>
+   <p md-src-pos="8655..8821"><span md-src-pos="8655..8671">Dana jest liczba</span> <code md-src-pos="8672..8687">number = 0.25</code><span md-src-pos="8687..8688">.</span> <span md-src-pos="8689..8701">Wybierz kod,</span> <span md-src-pos="8702..8770">który wykorzystusjąc formatowanie liczb zmiennoprzecinkowych pozwoli</span> <span md-src-pos="8772..8797">na wyświetlenie w konsoli</span> <code md-src-pos="8798..8820">The increase was 25%</code>:</p>
+   <ol md-src-pos="8823..9000">
+    <li md-src-pos="8823..8866"><code md-src-pos="8826..8866">print(f"The increase was {number:.%}")</code></li>
+    <li md-src-pos="8867..8911"><code md-src-pos="8870..8911">print(f"The increase was {number:.0%}")</code></li>
+    <li md-src-pos="8912..8956"><code md-src-pos="8915..8956">print(f"The increase was {number:.1%}")</code></li>
+    <li md-src-pos="8957..9000"><code md-src-pos="8960..9000">print(f"The increase was {number:f%}")</code></li>
+   </ol>
+   <p md-src-pos="9002..9015"><strong md-src-pos="9002..9015">Pytanie 5</strong></p>
+   <p md-src-pos="9017..9031"><span md-src-pos="9017..9030">Dany jest kod</span>:</p>
+   <pre class="code-fence" md-src-pos="9033..9137">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IG1hdGgKCmEsIGIgPSA1MC4wLCA0MS4wCmlzX2Nsb3NlID0gbWF0aC5pc2Nsb3NlKGEsIGIsIHJlbF90b2w9MC4yKQoKcHJpbnQoaXNfY2xvc2Up">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="9033..9137"><span md-src-pos="9033..9043"></span><span md-src-pos="9043..9055"><span style="color: rgb(0, 51, 179);">import</span> math</span>
+<span md-src-pos="9055..9056"></span>
+<span md-src-pos="9056..9074">a, b = <span style="color: rgb(23, 80, 235);">50.0</span>, <span style="color: rgb(23, 80, 235);">41.0</span></span>
+<span md-src-pos="9074..9117">is_close = math.isclose(a, b, rel_tol=<span style="color: rgb(23, 80, 235);">0.2</span>)</span>
+<span md-src-pos="9117..9118"></span>
+<span md-src-pos="9118..9134">print(is_close)</span>
+<span md-src-pos="9134..9135"></span><span md-src-pos="9134..9137"></span></code></pre>
+   <p md-src-pos="9139..9173"><span md-src-pos="9139..9173">Co zostanie wyświetlone w konsoli?</span></p>
+   <ol md-src-pos="9175..9215">
+    <li md-src-pos="9175..9184"><code md-src-pos="9178..9184">True</code></li>
+    <li md-src-pos="9185..9195"><code md-src-pos="9188..9195">False</code></li>
+    <li md-src-pos="9196..9205"><code md-src-pos="9199..9205">50.0</code></li>
+    <li md-src-pos="9206..9215"><code md-src-pos="9209..9215">41.0</code></li>
+   </ol>
+   <p md-src-pos="9217..9230"><strong md-src-pos="9217..9230">Pytanie 6</strong></p>
+   <p md-src-pos="9232..9291"><span md-src-pos="9232..9277">Które z wymienionych funkcji należą do modułu</span> <code md-src-pos="9278..9290">statistics</code><span md-src-pos="9290..9291">?</span></p>
+   <ol md-src-pos="9293..9426">
+    <li md-src-pos="9293..9323"><code md-src-pos="9296..9323">mean, fmean, median, mode</code></li>
+    <li md-src-pos="9324..9357"><code md-src-pos="9327..9357">mean, median, dominante, var</code></li>
+    <li md-src-pos="9358..9392"><code md-src-pos="9361..9392">fmean, median, mode, variance</code></li>
+    <li md-src-pos="9393..9426">Odpowiedzi A i C są prawidłowe</li>
+   </ol>
+   <p md-src-pos="9428..9441"><strong md-src-pos="9428..9441">Pytanie 7</strong></p>
+   <p md-src-pos="9443..9457"><span md-src-pos="9443..9456">Dany jest kod</span>:</p>
+   <pre class="code-fence" md-src-pos="9459..9500">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IHJhbmRvbQoKYSwgYiA9IC01LCA1">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="9459..9500"><span md-src-pos="9459..9469"></span><span md-src-pos="9469..9483"><span style="color: rgb(0, 51, 179);">import</span> random</span>
+<span md-src-pos="9483..9484"></span>
+<span md-src-pos="9484..9497">a, b = -<span style="color: rgb(23, 80, 235);">5</span>, <span style="color: rgb(23, 80, 235);">5</span></span>
+<span md-src-pos="9497..9498"></span><span md-src-pos="9497..9500"></span></code></pre>
+   <p md-src-pos="9502..9586"><span md-src-pos="9502..9578">Które z poniższych rozwiązań umożliwia wygenerowanie liczby z zakresu między</span> <span md-src-pos="9579..9586">-5 a 5?</span></p>
+   <ol md-src-pos="9588..9690">
+    <li md-src-pos="9588..9611"><code md-src-pos="9591..9611">random.range(a, b)</code></li>
+    <li md-src-pos="9612..9637"><code md-src-pos="9615..9637">random.uniform(a, b)</code></li>
+    <li md-src-pos="9638..9662"><code md-src-pos="9641..9662">random.random(a, b)</code></li>
+    <li md-src-pos="9663..9690"><code md-src-pos="9666..9690">random.generator(a, b)</code></li>
+   </ol>
+   <h3 id="a-idrozdzial5arozdział-5---operacje-na-znakach-i-łańcuchach-znaków" md-src-pos="9692..9771"><a id="rozdzial_5"></a>Rozdział 5 - Operacje na znakach i łańcuchach znaków</h3>
+   <p md-src-pos="9772..9785"><strong md-src-pos="9772..9785">Pytanie 1</strong></p>
+   <p md-src-pos="9787..9914"><span md-src-pos="9787..9851">Które z poniższych rozwiązań umożliwia pobranie pierwszej litery</span> <code md-src-pos="9852..9855">i</code> <span md-src-pos="9856..9886">występującej w łańcuchu znaków</span> <code md-src-pos="9887..9913">name = "Marcin Mikiciuk"</code><span md-src-pos="9913..9914">?</span></p>
+   <ol md-src-pos="9916..10012">
+    <li md-src-pos="9916..9937"><code md-src-pos="9919..9937">letter = name[4]</code></li>
+    <li md-src-pos="9938..9959"><code md-src-pos="9941..9959">letter = name[5]</code></li>
+    <li md-src-pos="9960..9983"><code md-src-pos="9963..9983">letter = name['i']</code></li>
+    <li md-src-pos="9984..10012"><code md-src-pos="9987..10012">letter = name.find('i')</code></li>
+   </ol>
+   <p md-src-pos="10014..10027"><strong md-src-pos="10014..10027">Pytanie 2</strong></p>
+   <p md-src-pos="10029..10052"><span md-src-pos="10029..10051">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="10054..10132">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="bmFtZSA9ICJNYXJjaW4gTWlraWNpdWsiCmFzX2xpc3QgPSBsaXN0KG5hbWUpCnByaW50KGFzX2xpc3RbOjZdKQ==">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="10054..10132"><span md-src-pos="10054..10064"></span><span md-src-pos="10064..10089">name = <span style="color: rgb(6, 125, 23);">"Marcin Mikiciuk"</span></span>
+<span md-src-pos="10089..10110">as_list = list(name)</span>
+<span md-src-pos="10110..10129">print(as_list[:<span style="color: rgb(23, 80, 235);">6</span>])</span>
+<span md-src-pos="10129..10130"></span><span md-src-pos="10129..10132"></span></code></pre>
+   <p md-src-pos="10134..10186"><span md-src-pos="10134..10186">Co zostanie wyświetlone w konsoli po jego wykonaniu?</span></p>
+   <ol md-src-pos="10188..10249">
+    <li md-src-pos="10188..10194"><code md-src-pos="10191..10194"></code></li>
+    <li md-src-pos="10195..10201"><code md-src-pos="10198..10201">n</code></li>
+    <li md-src-pos="10202..10213"><code md-src-pos="10205..10213">Marcin</code></li>
+    <li md-src-pos="10214..10249"><code md-src-pos="10217..10249">['M', 'a', 'r', 'c', 'i', 'n']</code></li>
+   </ol>
+   <p md-src-pos="10251..10264"><strong md-src-pos="10251..10264">Pytanie 3</strong></p>
+   <p md-src-pos="10266..10289"><span md-src-pos="10266..10288">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="10291..10371">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="bnVtYmVycyA9IFsxLCAyLCAzXQphc19zdHJpbmcgPSAnIycuam9pbihudW1iZXJzKQpwcmludChhc19zdHJpbmcp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="10291..10371"><span md-src-pos="10291..10301"></span><span md-src-pos="10301..10321">numbers = [<span style="color: rgb(23, 80, 235);">1</span>, <span style="color: rgb(23, 80, 235);">2</span>, <span style="color: rgb(23, 80, 235);">3</span>]</span>
+<span md-src-pos="10321..10351">as_string = <span style="color: rgb(6, 125, 23);">'#'</span>.join(numbers)</span>
+<span md-src-pos="10351..10368">print(as_string)</span>
+<span md-src-pos="10368..10369"></span><span md-src-pos="10368..10371"></span></code></pre>
+   <p md-src-pos="10373..10425"><span md-src-pos="10373..10425">Co zostanie wyświetlone w konsoli po jego wykonaniu?</span></p>
+   <ol md-src-pos="10427..10538">
+    <li md-src-pos="10427..10437"><code md-src-pos="10430..10437">1#2#3</code></li>
+    <li md-src-pos="10438..10447"><code md-src-pos="10441..10447">#123</code></li>
+    <li md-src-pos="10448..10472"><code md-src-pos="10451..10472">[1, '#', 2, '#', 3]</code></li>
+    <li md-src-pos="10473..10538"><code md-src-pos="10476..10538">TypeError: sequence item 0: expected str instance, int found</code></li>
+   </ol>
+   <p md-src-pos="10540..10553"><strong md-src-pos="10540..10553">Pytanie 4</strong></p>
+   <p md-src-pos="10555..10578"><span md-src-pos="10555..10577">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="10580..10628">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="eCA9ICJNYXJjaW4gTWlraWNpdWsiCi4uLgpwcmludCh4KQ==">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="10580..10628"><span md-src-pos="10580..10590"></span><span md-src-pos="10590..10612">x = <span style="color: rgb(6, 125, 23);">"Marcin Mikiciuk"</span></span>
+<span md-src-pos="10612..10616">...</span>
+<span md-src-pos="10616..10625">print(x)</span>
+<span md-src-pos="10625..10626"></span><span md-src-pos="10625..10628"></span></code></pre>
+   <p md-src-pos="10630..10810"><span md-src-pos="10630..10650">Wybierz rozwiązanie,</span> <span md-src-pos="10651..10681">które należy wstawić w miejsce</span> <code md-src-pos="10682..10687">...</code><span md-src-pos="10687..10688">,</span> <span md-src-pos="10689..10754">aby po wykonaniu kodu został wyświetlony w konsoli łańcuch znaków</span> <code md-src-pos="10755..10809">Pan Marcin Mikiciuk nie może teraz odebrać telefonu.</code><span md-src-pos="10809..10810">.</span></p>
+   <ol md-src-pos="10812..11036">
+    <li md-src-pos="10812..10864"><code md-src-pos="10815..10864">x = f'Pan {x} nie może teraz odebrać telefonu.'</code></li>
+    <li md-src-pos="10865..10927"><code md-src-pos="10868..10927">x = x.join(['Pan ', ' nie może teraz odebrać telefonu.'])</code></li>
+    <li md-src-pos="10928..10991"><code md-src-pos="10931..10991">x = 'Pan {x} nie może teraz odebrać telefonu.'.format(x=x)</code></li>
+    <li md-src-pos="10992..11036">Wszystkie powyższe odpowiedzi są poprawne</li>
+   </ol>
+   <p md-src-pos="11038..11051"><strong md-src-pos="11038..11051">Pytanie 5</strong></p>
+   <p md-src-pos="11053..11159"><span md-src-pos="11053..11077">Dany jest łańcuch znaków</span> <code md-src-pos="11078..11095">name = "marcin"</code><span md-src-pos="11095..11096">.</span> <span md-src-pos="11097..11147">Które z poniższych rozwiązań pozwoli zamienić znak</span> <code md-src-pos="11148..11151">m</code> <span md-src-pos="11152..11154">na</span> <code md-src-pos="11155..11158">M</code><span md-src-pos="11158..11159">?</span></p>
+   <ol md-src-pos="11161..11240">
+    <li md-src-pos="11161..11178"><code md-src-pos="11164..11178">name.upper()</code></li>
+    <li md-src-pos="11179..11201"><code md-src-pos="11182..11201">name.capitalize()</code></li>
+    <li md-src-pos="11202..11218"><code md-src-pos="11205..11218">name.cap(0)</code></li>
+    <li md-src-pos="11219..11240">Żadne z powyższych</li>
+   </ol>
+   <p md-src-pos="11242..11255"><strong md-src-pos="11242..11255">Pytanie 6</strong></p>
+   <p md-src-pos="11257..11280"><span md-src-pos="11257..11279">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="11282..11353">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IHJlCgpzZW50ZW5jZSA9ICJQYW4gTWFyY2luIHByemVsYcWCIGp1xbwgcGllbmnEhWR6ZS4i">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="11282..11353"><span md-src-pos="11282..11292"></span><span md-src-pos="11292..11302"><span style="color: rgb(0, 51, 179);">import</span> re</span>
+<span md-src-pos="11302..11303"></span>
+<span md-src-pos="11303..11350">sentence = <span style="color: rgb(6, 125, 23);">"Pan Marcin przelał już pieniądze."</span></span>
+<span md-src-pos="11350..11351"></span><span md-src-pos="11350..11353"></span></code></pre>
+   <p md-src-pos="11355..11421"><span md-src-pos="11355..11410">Które z poniższych rozwiązań zwróci po wykonaniu krotkę</span> <code md-src-pos="11411..11420">(4, 10)</code><span md-src-pos="11420..11421">?</span></p>
+   <ol md-src-pos="11423..11563">
+    <li md-src-pos="11423..11455"><code md-src-pos="11426..11455">re.span('Marcin', sentence)</code></li>
+    <li md-src-pos="11456..11486"><code md-src-pos="11459..11486">sentence.search('Marcin')</code></li>
+    <li md-src-pos="11487..11521"><code md-src-pos="11490..11521">re.search('Marcin', sentence)</code></li>
+    <li md-src-pos="11522..11563"><code md-src-pos="11525..11563">re.search('Marcin', sentence).span()</code></li>
+   </ol>
+   <p md-src-pos="11565..11578"><strong md-src-pos="11565..11578">Pytanie 7</strong></p>
+   <p md-src-pos="11580..11603"><span md-src-pos="11580..11602">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="11605..11807">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZnJvbSBzdHJpbmcgaW1wb3J0IFRlbXBsYXRlCgpuYW1lLCBhZ2UgPSAnTWFyY2luJywgNjUKCnRlbXBsYXRlID0gVGVtcGxhdGUoIk15IG5hbWUgaXMgJG4gYW5kIEkgYW0gJGEgeWVhcnMgb2xkLiIpCmZvcm1hdHRlZF9zdHJpbmcgPSB0ZW1wbGF0ZS5bPz8/XShuPW5hbWUsIGE9YWdlKQoKcHJpbnQoZm9ybWF0dGVkX3N0cmluZyk=">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="11605..11807"><span md-src-pos="11605..11615"></span><span md-src-pos="11615..11643"><span style="color: rgb(0, 51, 179);">from</span> string <span style="color: rgb(0, 51, 179);">import</span> Template</span>
+<span md-src-pos="11643..11644"></span>
+<span md-src-pos="11644..11669">name, age = <span style="color: rgb(6, 125, 23);">'Marcin'</span>, <span style="color: rgb(23, 80, 235);">65</span></span>
+<span md-src-pos="11669..11670"></span>
+<span md-src-pos="11670..11730">template = Template(<span style="color: rgb(6, 125, 23);">"My name is $n and I am $a years old."</span>)</span>
+<span md-src-pos="11730..11779">formatted_string = template.[???](n=name, a=age)</span>
+<span md-src-pos="11779..11780"></span>
+<span md-src-pos="11780..11804">print(formatted_string)</span>
+<span md-src-pos="11804..11805"></span><span md-src-pos="11804..11807"></span></code></pre>
+   <p md-src-pos="11809..11958"><span md-src-pos="11809..11846">Jaką funkcję należy wstawić w miejsce</span> <code md-src-pos="11847..11854">[???]</code><span md-src-pos="11854..11855">,</span> <span md-src-pos="11856..11914">aby po wykonaniu kodu w konsoli zostało wyświetlone zdanie</span> <code md-src-pos="11915..11957">My name is Marcin and I am 65 years old.</code><span md-src-pos="11957..11958">?</span></p>
+   <ol md-src-pos="11960..12010">
+    <li md-src-pos="11960..11970"><code md-src-pos="11963..11970">build</code></li>
+    <li md-src-pos="11971..11979"><code md-src-pos="11974..11979">set</code></li>
+    <li md-src-pos="11980..11995"><code md-src-pos="11983..11995">substitute</code></li>
+    <li md-src-pos="11996..12010"><code md-src-pos="11999..12010">construct</code></li>
+   </ol>
+   <p md-src-pos="12012..12025"><strong md-src-pos="12012..12025">Pytanie 8</strong></p>
+   <p md-src-pos="12027..12052"><span md-src-pos="12027..12043">Co oznacza skrót</span> <em md-src-pos="12044..12051">regex</em><span md-src-pos="12051..12052">?</span></p>
+   <ol md-src-pos="12054..12163">
+    <li md-src-pos="12054..12077"><em md-src-pos="12057..12077">regular expression</em></li>
+    <li md-src-pos="12078..12100"><em md-src-pos="12081..12100">regular excercise</em></li>
+    <li md-src-pos="12101..12121"><em md-src-pos="12104..12121">regular strings</em></li>
+    <li md-src-pos="12122..12163"><em md-src-pos="12125..12163">regular generative string formatting</em></li>
+   </ol>
+   <p md-src-pos="12165..12178"><strong md-src-pos="12165..12178">Pytanie 9</strong></p>
+   <p md-src-pos="12180..12203"><span md-src-pos="12180..12202">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="12205..12347">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IHJlCgpzdHJpbmcgPSAiSSBoYXZlIDUxIGFwcGxlcyBhbmQgMzUgb3Jhbmdlcy4iCmZvcm1hdHRlZF9zdHJpbmcgPSByZS5zdWIoWz8/P10sICdaRVJPJywgc3RyaW5nKQoKcHJpbnQoZm9ybWF0dGVkX3N0cmluZyk=">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="12205..12347"><span md-src-pos="12205..12215"></span><span md-src-pos="12215..12225"><span style="color: rgb(0, 51, 179);">import</span> re</span>
+<span md-src-pos="12225..12226"></span>
+<span md-src-pos="12226..12270">string = <span style="color: rgb(6, 125, 23);">"I have 51 apples and 35 oranges."</span></span>
+<span md-src-pos="12270..12319">formatted_string = re.sub([???], <span style="color: rgb(6, 125, 23);">'ZERO'</span>, string)</span>
+<span md-src-pos="12319..12320"></span>
+<span md-src-pos="12320..12344">print(formatted_string)</span>
+<span md-src-pos="12344..12345"></span><span md-src-pos="12344..12347"></span></code></pre>
+   <p md-src-pos="12349..12485"><span md-src-pos="12349..12376">Co należy wstawić w miejsce</span> <code md-src-pos="12377..12384">[???]</code><span md-src-pos="12384..12385">,</span> <span md-src-pos="12386..12444">aby po wykonaniu kodu w konsoli zostało wyświetlone zdanie</span> <code md-src-pos="12446..12484">I have ZERO apples and ZERO oranges.</code><span md-src-pos="12484..12485">?</span></p>
+   <ol md-src-pos="12487..12532">
+    <li md-src-pos="12487..12497"><code md-src-pos="12490..12497">r'\d'</code></li>
+    <li md-src-pos="12498..12509"><code md-src-pos="12501..12509">f'\d+'</code></li>
+    <li md-src-pos="12510..12520"><code md-src-pos="12513..12520">r'\d'</code></li>
+    <li md-src-pos="12521..12532"><code md-src-pos="12524..12532">r'\d+'</code></li>
+   </ol>
+   <p md-src-pos="12534..12548"><strong md-src-pos="12534..12548">Pytanie 10</strong></p>
+   <p md-src-pos="12550..12573"><span md-src-pos="12550..12572">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="12575..12749">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IHJlCgpzdHJpbmcgPSAiICAgVG8gemRhbmllICAgemF3aWVyYSB6ZGVjeWRvd2FuaWUgICB6Ynl0IHdpZWxlICAgc3BhY2ppISAgICIKY2xlYW5lZF9zdHJpbmcgPSByZS5zdWIoWz8/P10sIFs/Pz9dLCBzdHJpbmcuc3RyaXAoKSkKCnByaW50KGNsZWFuZWRfc3RyaW5nKQ==">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="12575..12749"><span md-src-pos="12575..12585"></span><span md-src-pos="12585..12595"><span style="color: rgb(0, 51, 179);">import</span> re</span>
+<span md-src-pos="12595..12596"></span>
+<span md-src-pos="12596..12669">string = <span style="color: rgb(6, 125, 23);">"   To zdanie   zawiera zdecydowanie   zbyt wiele   spacji!   "</span></span>
+<span md-src-pos="12669..12723">cleaned_string = re.sub([???], [???], string.strip())</span>
+<span md-src-pos="12723..12724"></span>
+<span md-src-pos="12724..12746">print(cleaned_string)</span>
+<span md-src-pos="12746..12747"></span><span md-src-pos="12746..12749"></span></code></pre>
+   <p md-src-pos="12751..12900"><span md-src-pos="12751..12778">Co należy wstawić w miejsca</span> <code md-src-pos="12779..12786">[???]</code><span md-src-pos="12786..12787">,</span> <span md-src-pos="12788..12846">aby po wykonaniu kodu w konsoli zostało wyświetlone zdanie</span> <code md-src-pos="12848..12899">To zdanie zawiera zdecydowanie zbyt wiele spacji!</code><span md-src-pos="12899..12900">?</span></p>
+   <ol md-src-pos="12902..12992">
+    <li md-src-pos="12902..12924"><code md-src-pos="12905..12912">f'\s+</code> oraz <code md-src-pos="12918..12924">' ''</code></li>
+    <li md-src-pos="12925..12947"><code md-src-pos="12928..12936">r'\s+'</code> oraz <code md-src-pos="12942..12947">\\s</code></li>
+    <li md-src-pos="12948..12970"><code md-src-pos="12951..12959">r'\s+'</code> oraz <code md-src-pos="12965..12970">' '</code></li>
+    <li md-src-pos="12971..12992"><code md-src-pos="12974..12981">f'\s+</code> oraz <code md-src-pos="12987..12992">\\s</code></li>
+   </ol>
+   <h3 id="a-idrozdzial6arozdział-6---operacje-na-kolekcjach" md-src-pos="12994..13056"><a id="rozdzial_6"></a>Rozdział 6 - Operacje na kolekcjach</h3>
+   <p md-src-pos="13058..13071"><strong md-src-pos="13058..13071">Pytanie 1</strong></p>
+   <p md-src-pos="13073..13110"><span md-src-pos="13073..13088">Wybierz zdanie,</span> <span md-src-pos="13089..13109">które jest prawdziwe</span>:</p>
+   <ol md-src-pos="13112..13489">
+    <li md-src-pos="13112..13187">Iterator w Pythonie służy wyłącznie do iteracji po liczbach całkowitych.</li>
+    <li md-src-pos="13188..13262">Iterator jest jednorazowym obiektem i nie można go używać wielokrotnie.</li>
+    <li md-src-pos="13263..13360">Każda kolekcja w Pythonie jest automatycznie iteratorem i nie wymaga dodatkowego zastosowania.</li>
+    <li md-src-pos="13361..13489">Iterator w języku Python to obiekt, który umożliwia iterację po elementach kolekcji (np. listy, krotki) lub sekwencji danych.</li>
+   </ol>
+   <p md-src-pos="13491..13504"><strong md-src-pos="13491..13504">Pytanie 2</strong></p>
+   <p md-src-pos="13506..13543"><span md-src-pos="13506..13521">Wybierz zdanie,</span> <span md-src-pos="13522..13542">które jest prawdziwe</span>:</p>
+   <ol md-src-pos="13545..13951">
+    <li md-src-pos="13545..13630">Generator w Pythonie to wbudowany typ danych do przechowywania sekwencji wartości.</li>
+    <li md-src-pos="13631..13786">Generator w języku Python to funkcja zawierająca przynajmniej jedno wyrażenie <code md-src-pos="13712..13719">yield</code>, które służy do generowania kolejnych wartości w trakcie iteracji.</li>
+    <li md-src-pos="13787..13862">Generator jest jednorazowym obiektem i nie można go używać wielokrotnie.</li>
+    <li md-src-pos="13863..13951">Generatory w Pythonie nie mogą być używane w pętlach <code md-src-pos="13919..13924">for</code> do iteracji po kolekcjach.</li>
+   </ol>
+   <p md-src-pos="13953..13966"><strong md-src-pos="13953..13966">Pytanie 3</strong></p>
+   <p md-src-pos="13968..13991"><span md-src-pos="13968..13990">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="13993..14137">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIGZpYm9uYWNjaSgpOgogICBhLCBiID0gMCwgMQogICB3aGlsZSBUcnVlOgogICAgICAgeWllbGQgYQogICAgICAgYSwgYiA9IGIsIGEgKyBiCgoKZmliX2dlbiA9IGZpYm9uYWNjaSgpCgpwcmludChuZXh0KGZpYl9nZW4pKQ==">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="13993..14137"><span md-src-pos="13993..14003"></span><span md-src-pos="14003..14020"><span style="color: rgb(0, 51, 179);">def</span> fibonacci():</span>
+<span md-src-pos="14020..14035">   a, b = <span style="color: rgb(23, 80, 235);">0</span>, <span style="color: rgb(23, 80, 235);">1</span></span>
+<span md-src-pos="14035..14050">   <span style="color: rgb(0, 51, 179);">while</span> <span style="color: rgb(0, 51, 179);">True</span>:</span>
+<span md-src-pos="14050..14065">       <span style="color: rgb(0, 51, 179);">yield</span> a</span>
+<span md-src-pos="14065..14088">       a, b = b, a + b</span>
+<span md-src-pos="14088..14089"></span>
+<span md-src-pos="14089..14090"></span>
+<span md-src-pos="14090..14112">fib_gen = fibonacci()</span>
+<span md-src-pos="14112..14113"></span>
+<span md-src-pos="14113..14134">print(next(fib_gen))</span>
+<span md-src-pos="14134..14135"></span><span md-src-pos="14134..14137"></span></code></pre>
+   <p md-src-pos="14139..14194"><span md-src-pos="14139..14194">Co zostanie wyświetlone w konsoli po jego uruchomieniu?</span></p>
+   <ol md-src-pos="14196..14323">
+    <li md-src-pos="14196..14251"><code md-src-pos="14199..14251">&lt;generator object fibonacci at 0x000001B29B419630&gt;</code></li>
+    <li md-src-pos="14252..14258"><code md-src-pos="14255..14258">0</code></li>
+    <li md-src-pos="14259..14265"><code md-src-pos="14262..14265">1</code></li>
+    <li md-src-pos="14266..14323"><code md-src-pos="14269..14323">TypeError: next expected at least 2 arguments, got 1</code></li>
+   </ol>
+   <p md-src-pos="14325..14338"><strong md-src-pos="14325..14338">Pytanie 4</strong></p>
+   <p md-src-pos="14340..14429"><span md-src-pos="14340..14409">Które z poniższych rozwiązań pozwala na stworzenie następującej listy</span>: <code md-src-pos="14411..14428">[1, 3, 5, 7, 9]</code><span md-src-pos="14428..14429">?</span></p>
+   <ol md-src-pos="14431..14558">
+    <li md-src-pos="14431..14464"><code md-src-pos="14434..14464">[x for x in range(1, 11, 2)]</code></li>
+    <li md-src-pos="14465..14495"><code md-src-pos="14468..14495">[x for x in range(1, 11)]</code></li>
+    <li md-src-pos="14496..14528"><code md-src-pos="14499..14528">[x for x in range(1, 9, 2)]</code></li>
+    <li md-src-pos="14529..14558"><code md-src-pos="14532..14558">[x for x in range(1, 9)]</code></li>
+   </ol>
+   <p md-src-pos="14560..14573"><strong md-src-pos="14560..14573">Pytanie 5</strong></p>
+   <p md-src-pos="14575..14769"><span md-src-pos="14575..14595">Korzystając z moduły</span> <code md-src-pos="14596..14604">string</code> <span md-src-pos="14605..14638">oraz techniki składania słowników</span> (<em md-src-pos="14640..14665">dictonary comprehension</em>) <span md-src-pos="14667..14682">stwórz słownik,</span> <span md-src-pos="14683..14699">którego kluczami</span> <span md-src-pos="14700..14736">są małe litery alfabetu łacińskiego,</span> <span md-src-pos="14737..14769">a wartościami liczby od 1 do 26.</span></p>
+   <p md-src-pos="14771..14784"><strong md-src-pos="14771..14784">Pytanie 6</strong></p>
+   <p md-src-pos="14786..14809"><span md-src-pos="14786..14808">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="14811..14967">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZW1wbG95ZWVzID0gWydNaWtpY2l1aycsICdLb3dhbHNraScsICdSYWN6a293c2thJywgJ0xpc2lja2EnXQoKZm9yIGluZGV4LCBlbXBsb3llZSBpbiBlbnVtZXJhdGUoZW1wbG95ZWVzKToKICAgcHJpbnQoaW5kZXgsIGVtcGxveWVlLCBlbmQ9JyAnKQ==">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="14811..14967"><span md-src-pos="14811..14821"></span><span md-src-pos="14821..14883">employees = [<span style="color: rgb(6, 125, 23);">'Mikiciuk'</span>, <span style="color: rgb(6, 125, 23);">'Kowalski'</span>, <span style="color: rgb(6, 125, 23);">'Raczkowska'</span>, <span style="color: rgb(6, 125, 23);">'Lisicka'</span>]</span>
+<span md-src-pos="14883..14884"></span>
+<span md-src-pos="14884..14929"><span style="color: rgb(0, 51, 179);">for</span> index, employee <span style="color: rgb(0, 51, 179);">in</span> enumerate(employees):</span>
+<span md-src-pos="14929..14964">   print(index, employee, end=<span style="color: rgb(6, 125, 23);">' '</span>)</span>
+<span md-src-pos="14964..14965"></span><span md-src-pos="14964..14967"></span></code></pre>
+   <p md-src-pos="14969..15018"><span md-src-pos="14969..15018">Jaki będzie wynik działania przedstawionego kodu?</span></p>
+   <ol md-src-pos="15020..15239">
+    <li md-src-pos="15020..15062"><code md-src-pos="15023..15062">Mikiciuk Kowalski Raczkowska Lisicka</code></li>
+    <li md-src-pos="15063..15113"><code md-src-pos="15066..15113">0 Mikiciuk 1 Kowalski 2 Raczkowska 3 Lisicka</code></li>
+    <li md-src-pos="15114..15164"><code md-src-pos="15117..15164">1 Mikiciuk 2 Kowalski 3 Raczkowska 4 Lisicka</code></li>
+    <li md-src-pos="15165..15239"><code md-src-pos="15168..15239">enum(0) Mikiciuk enum(1) Kowalski enum(2) Raczkowska enum(3) Lisicka</code></li>
+   </ol>
+   <p md-src-pos="15241..15254"><strong md-src-pos="15241..15254">Pytanie 7</strong></p>
+   <p md-src-pos="15256..15375"><span md-src-pos="15256..15271">Dana jest lista</span> <code md-src-pos="15272..15302">my_list = [3, 1, 4, 1, 5, 9]</code><span md-src-pos="15302..15303">.</span> <span md-src-pos="15304..15375">Które z poniższych rozwiązań pozwala posortować elementy listy rosnąco?</span></p>
+   <ol md-src-pos="15377..15514">
+    <li md-src-pos="15377..15411"><code md-src-pos="15380..15411">sorted_list = sorted(my_list)</code></li>
+    <li md-src-pos="15412..15447"><code md-src-pos="15415..15447">sorted_list = my_list.sorted()</code></li>
+    <li md-src-pos="15448..15480"><code md-src-pos="15451..15480">sorted_list = sort(my_list)</code></li>
+    <li md-src-pos="15481..15514"><code md-src-pos="15484..15514">sorted_list = my_list.sort()</code></li>
+   </ol>
+   <p md-src-pos="15516..15529"><strong md-src-pos="15516..15529">Pytanie 8</strong></p>
+   <p md-src-pos="15531..15554"><span md-src-pos="15531..15553">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="15556..15765">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="Zmlyc3RfbmFtZXMgPSBbJ0FsaWNlJywgJ0JvYicsICdDaGFybGllJ10KbGFzdF9uYW1lcyA9IFsnU21pdGgnLCAnQnJvbnNvbicsICdTaGVlbiddCmFnZXMgPSBbMjUsIDMwLCAzNV0KCnppcHBlZCA9IHppcChmaXJzdF9uYW1lcywgbGFzdF9uYW1lcywgYWdlcykKCmZvciBmbiwgbG4sIGEgaW4gemlwcGVkOgogICBwcmludChmbiwgbG4sIGEp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="15556..15765"><span md-src-pos="15556..15566"></span><span md-src-pos="15566..15608">first_names = [<span style="color: rgb(6, 125, 23);">'Alice'</span>, <span style="color: rgb(6, 125, 23);">'Bob'</span>, <span style="color: rgb(6, 125, 23);">'Charlie'</span>]</span>
+<span md-src-pos="15608..15651">last_names = [<span style="color: rgb(6, 125, 23);">'Smith'</span>, <span style="color: rgb(6, 125, 23);">'Bronson'</span>, <span style="color: rgb(6, 125, 23);">'Sheen'</span>]</span>
+<span md-src-pos="15651..15671">ages = [<span style="color: rgb(23, 80, 235);">25</span>, <span style="color: rgb(23, 80, 235);">30</span>, <span style="color: rgb(23, 80, 235);">35</span>]</span>
+<span md-src-pos="15671..15672"></span>
+<span md-src-pos="15672..15716">zipped = zip(first_names, last_names, ages)</span>
+<span md-src-pos="15716..15717"></span>
+<span md-src-pos="15717..15742"><span style="color: rgb(0, 51, 179);">for</span> fn, ln, a <span style="color: rgb(0, 51, 179);">in</span> zipped:</span>
+<span md-src-pos="15742..15762">   print(fn, ln, a)</span>
+<span md-src-pos="15762..15763"></span><span md-src-pos="15762..15765"></span></code></pre>
+   <p md-src-pos="15767..15839"><span md-src-pos="15767..15832">Co zostanie wyświetlone w konsoli w ramach drugiej iteracji pętli</span> <code md-src-pos="15833..15838">for</code><span md-src-pos="15838..15839">?</span></p>
+   <ol md-src-pos="15841..15935">
+    <li md-src-pos="15841..15873"><code md-src-pos="15844..15873">'Smith', 'Bronson', 'Sheen'</code></li>
+    <li md-src-pos="15874..15893"><code md-src-pos="15877..15893">Alice Smith 25</code></li>
+    <li md-src-pos="15894..15913"><code md-src-pos="15897..15913">Bob Bronson 30</code></li>
+    <li md-src-pos="15914..15935"><code md-src-pos="15917..15935">Charlie Sheen 35</code></li>
+   </ol>
+   <p md-src-pos="15937..15950"><strong md-src-pos="15937..15950">Pytanie 9</strong></p>
+   <p md-src-pos="15952..15975"><span md-src-pos="15952..15974">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="15977..16111">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="bnVtYmVycyA9IFsxLCAyLCAzLCA0LCA1LCA2LCA3LCA4LCA5LCAxMF0KZXZlbl9udW1iZXJzID0gZmlsdGVyKGxhbWJkYSB4OiB4ICUgMiA9PSAwLCBudW1iZXJzKQpwcmludChsaXN0KGV2ZW5fbnVtYmVycykp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="15977..16111"><span md-src-pos="15977..15987"></span><span md-src-pos="15987..16029">numbers = [<span style="color: rgb(23, 80, 235);">1</span>, <span style="color: rgb(23, 80, 235);">2</span>, <span style="color: rgb(23, 80, 235);">3</span>, <span style="color: rgb(23, 80, 235);">4</span>, <span style="color: rgb(23, 80, 235);">5</span>, <span style="color: rgb(23, 80, 235);">6</span>, <span style="color: rgb(23, 80, 235);">7</span>, <span style="color: rgb(23, 80, 235);">8</span>, <span style="color: rgb(23, 80, 235);">9</span>, <span style="color: rgb(23, 80, 235);">10</span>]</span>
+<span md-src-pos="16029..16082">even_numbers = filter(<span style="color: rgb(0, 51, 179);">lambda</span> x: x % <span style="color: rgb(23, 80, 235);">2</span> == <span style="color: rgb(23, 80, 235);">0</span>, numbers)</span>
+<span md-src-pos="16082..16108">print(list(even_numbers))</span>
+<span md-src-pos="16108..16109"></span><span md-src-pos="16108..16111"></span></code></pre>
+   <p md-src-pos="16113..16186"><span md-src-pos="16113..16186">Co zostanie wyświetlone w konsoli podczas wykonania przedstawionego kodu?</span></p>
+   <ol md-src-pos="16188..16354">
+    <li md-src-pos="16188..16285"><code md-src-pos="16191..16230">&lt;filter object at 0x00000122366A3250&gt;</code> (wartość po <em md-src-pos="16243..16247">at</em> różni się przy każdym wykonaniu kodu)</li>
+    <li md-src-pos="16286..16307"><code md-src-pos="16289..16307">[2, 4, 6, 8, 10]</code></li>
+    <li md-src-pos="16308..16344"><code md-src-pos="16311..16344">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></li>
+    <li md-src-pos="16345..16354"><code md-src-pos="16348..16354">None</code></li>
+   </ol>
+   <p md-src-pos="16356..16370"><strong md-src-pos="16356..16370">Pytanie 10</strong></p>
+   <p md-src-pos="16372..16524"><span md-src-pos="16372..16440">Które rozwiązanie zaprezentowane poniżej pozwala stworzyć nową listę</span> <code md-src-pos="16441..16466">new_list = [0, 0, 1, 1]</code> <span md-src-pos="16467..16491">na podstawie istniejącej</span> <span md-src-pos="16493..16498">listy</span> <code md-src-pos="16499..16523">numbers = [1, 2, 3, 4]</code><span md-src-pos="16523..16524">?</span></p>
+   <ol md-src-pos="16526..16731">
+    <li md-src-pos="16526..16563"><code md-src-pos="16529..16563">new_list = map(numbers, above=2)</code></li>
+    <li md-src-pos="16564..16622"><code md-src-pos="16567..16622">new_list = map(lambda x: 1 if x &gt;= 3 else 0, numbers)</code></li>
+    <li md-src-pos="16623..16666"><code md-src-pos="16626..16666">new_list = list(map(numbers, above=2))</code></li>
+    <li md-src-pos="16667..16731"><code md-src-pos="16670..16731">new_list = list(map(lambda x: 1 if x &gt;= 3 else 0, numbers))</code></li>
+   </ol>
+   <p md-src-pos="16733..16747"><strong md-src-pos="16733..16747">Pytanie 11</strong></p>
+   <p md-src-pos="16749..16772"><span md-src-pos="16749..16771">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="16774..16940">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZnJvbSBmdW5jdG9vbHMgaW1wb3J0IHJlZHVjZQoKZGVmIG11bHRpcGx5KHgsIHkpOgogICByZXR1cm4geCAqIHkKCm51bWJlcnMgPSBbMSwgMiwgM10KCnN1bV9vZl9udW1iZXJzID0gcmVkdWNlKG11bHRpcGx5LCBudW1iZXJzKQpwcmludChzdW1fb2ZfbnVtYmVycyk=">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="16774..16940"><span md-src-pos="16774..16784"></span><span md-src-pos="16784..16813"><span style="color: rgb(0, 51, 179);">from</span> functools <span style="color: rgb(0, 51, 179);">import</span> reduce</span>
+<span md-src-pos="16813..16814"></span>
+<span md-src-pos="16814..16834"><span style="color: rgb(0, 51, 179);">def</span> multiply(x, y):</span>
+<span md-src-pos="16834..16850">   <span style="color: rgb(0, 51, 179);">return</span> x * y</span>
+<span md-src-pos="16850..16851"></span>
+<span md-src-pos="16851..16871">numbers = [<span style="color: rgb(23, 80, 235);">1</span>, <span style="color: rgb(23, 80, 235);">2</span>, <span style="color: rgb(23, 80, 235);">3</span>]</span>
+<span md-src-pos="16871..16872"></span>
+<span md-src-pos="16872..16915">sum_of_numbers = reduce(multiply, numbers)</span>
+<span md-src-pos="16915..16937">print(sum_of_numbers)</span>
+<span md-src-pos="16937..16938"></span><span md-src-pos="16937..16940"></span></code></pre>
+   <p md-src-pos="16942..16994"><span md-src-pos="16942..16994">Co zostanie wyświetlone w konsoli po jego wykonaniu?</span></p>
+   <ol md-src-pos="16996..17070">
+    <li md-src-pos="16996..17010"><code md-src-pos="16999..17010">[1, 3, 6]</code></li>
+    <li md-src-pos="17011..17017"><code md-src-pos="17014..17017">6</code></li>
+    <li md-src-pos="17018..17027"><code md-src-pos="17021..17027">None</code></li>
+    <li md-src-pos="17028..17070"><code md-src-pos="17031..17070">&lt;reduce object at 0x00000122366A3250&gt;</code></li>
+   </ol>
+   <p md-src-pos="17072..17086"><strong md-src-pos="17072..17086">Pytanie 12</strong></p>
+   <p md-src-pos="17088..17111"><span md-src-pos="17088..17110">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="17113..17293">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZnJvbSBpdGVydG9vbHMgaW1wb3J0IGdyb3VwYnkKCm5hbWVzID0gWydQaW90cicsICdNYXJjaW4nLCAnQW5kcnplaicsICdQYXdlxYInLCAnTWljaGHFgicsICdNYWNpZWonXQoKWz8/P10KCmZvciBrZXksIGdyb3VwIGluIGdyb3VwZWRfbmFtZXM6CiAgIHByaW50KGtleSwgbGlzdChncm91cCkp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="17113..17293"><span md-src-pos="17113..17123"></span><span md-src-pos="17123..17153"><span style="color: rgb(0, 51, 179);">from</span> itertools <span style="color: rgb(0, 51, 179);">import</span> groupby</span>
+<span md-src-pos="17153..17154"></span>
+<span md-src-pos="17154..17222">names = [<span style="color: rgb(6, 125, 23);">'Piotr'</span>, <span style="color: rgb(6, 125, 23);">'Marcin'</span>, <span style="color: rgb(6, 125, 23);">'Andrzej'</span>, <span style="color: rgb(6, 125, 23);">'Paweł'</span>, <span style="color: rgb(6, 125, 23);">'Michał'</span>, <span style="color: rgb(6, 125, 23);">'Maciej'</span>]</span>
+<span md-src-pos="17222..17223"></span>
+<span md-src-pos="17223..17229">[???]</span>
+<span md-src-pos="17229..17230"></span>
+<span md-src-pos="17230..17263"><span style="color: rgb(0, 51, 179);">for</span> key, group <span style="color: rgb(0, 51, 179);">in</span> grouped_names:</span>
+<span md-src-pos="17263..17290">   print(key, list(group))</span>
+<span md-src-pos="17290..17291"></span><span md-src-pos="17290..17293"></span></code></pre>
+   <p md-src-pos="17295..17389"><span md-src-pos="17295..17322">Co należy wstawić w miejsce</span> <code md-src-pos="17323..17330">[???]</code><span md-src-pos="17330..17331">,</span> <span md-src-pos="17332..17388">aby uzyskać następujący wynik działnia skryptu w konsoli</span>:</p>
+   <pre class="code-fence" md-src-pos="17391..17478">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="UCBbJ1Bpb3RyJ10KTSBbJ01hcmNpbiddCkEgWydBbmRyemVqJ10KUCBbJ1Bhd2XFgiddCk0gWydNaWNoYcWCJywgJ01hY2llaidd">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-output" md-src-pos="17391..17478"><span md-src-pos="17391..17401"></span><span md-src-pos="17401..17412">P ['Piotr']</span>
+<span md-src-pos="17413..17425">M ['Marcin']</span>
+<span md-src-pos="17426..17439">A ['Andrzej']</span>
+<span md-src-pos="17440..17451">P ['Paweł']</span>
+<span md-src-pos="17452..17474">M ['Michał', 'Maciej']</span>
+<span md-src-pos="17475..17475"></span><span md-src-pos="17475..17478"></span></code></pre>
+   <ol md-src-pos="17480..17681">
+    <li md-src-pos="17480..17515"><code md-src-pos="17483..17515">grouped_names = groupby(names)</code></li>
+    <li md-src-pos="17516..17568"><code md-src-pos="17519..17568">grouped_names = groupby(names, key=lambda x: x)</code></li>
+    <li md-src-pos="17569..17625"><code md-src-pos="17572..17625">grouped_names = groupby(names, key=lambda x: names)</code></li>
+    <li md-src-pos="17626..17681"><code md-src-pos="17629..17681">grouped_names = groupby(names, key=lambda x: x[0])</code></li>
+   </ol>
+   <p md-src-pos="17683..17697"><strong md-src-pos="17683..17697">Pytanie 13</strong></p>
+   <p md-src-pos="17699..17855"><span md-src-pos="17699..17718">Dane są dwie krotki</span> <code md-src-pos="17719..17735">t1 = (1, 2, 3)</code> <span md-src-pos="17736..17739">and</span> <code md-src-pos="17740..17756">t2 = (4, 5, 6)</code><span md-src-pos="17756..17757">.</span> <span md-src-pos="17758..17815">Które z poniższych rozwiązań pozwala połączyć obie krotki</span> <span md-src-pos="17817..17833">do jednej krotki</span> <code md-src-pos="17834..17854">(1, 2, 3, 4, 5, 6)</code><span md-src-pos="17854..17855">?</span></p>
+   <ol md-src-pos="17857..17926">
+    <li md-src-pos="17857..17875"><code md-src-pos="17860..17875">merge(t1, t2)</code></li>
+    <li md-src-pos="17876..17900"><code md-src-pos="17879..17900">concatenate(t1, t2)</code></li>
+    <li md-src-pos="17901..17913"><code md-src-pos="17904..17913">t1 + t2</code></li>
+    <li md-src-pos="17914..17926"><code md-src-pos="17917..17926">t1 * t2</code></li>
+   </ol>
+   <h3 id="a-idrozdzial7arozdział-7---obsługa-wyjątków" md-src-pos="17928..17984"><a id="rozdzial_7"></a>Rozdział 7 - Obsługa wyjątków</h3>
+   <p md-src-pos="17986..17999"><strong md-src-pos="17986..17999">Pytanie 1</strong></p>
+   <p md-src-pos="18001..18065"><span md-src-pos="18001..18065">Które zdanie najlepiej opisuje obsługę wyjątków w języku Python?</span></p>
+   <ol md-src-pos="18067..18596">
+    <li md-src-pos="18067..18192">Obsługa wyjątków w Pythonie to sposób na ignorowanie błędów i kontynuowanie wykonywania programu bez żadnych konsekwencji.</li>
+    <li md-src-pos="18193..18320">Obsługa wyjątków jest techniką używaną do celowego wprowadzania błędów do programu w celu przetestowania jego niezawodności.</li>
+    <li md-src-pos="18321..18438">Obsługa wyjątków w Pythonie ma zastosowanie tylko do błędów składni i nie może obsługiwać błędów uruchomieniowych.</li>
+    <li md-src-pos="18439..18596">Obsługa wyjątków w Pythonie pozwala na obsługę błędów i wyjątków, które występują podczas wykonywania programu, zapobiegając nagłemu zakończeniu programu.</li>
+   </ol>
+   <p md-src-pos="18598..18611"><strong md-src-pos="18598..18611">Pytanie 2</strong></p>
+   <p md-src-pos="18613..18668"><span md-src-pos="18613..18668">Które instrukcje są wykorzystywane w obsłudze wyjątków?</span></p>
+   <ol md-src-pos="18670..18785">
+    <li md-src-pos="18670..18701"><code md-src-pos="18673..18701">try, except, else, finally</code></li>
+    <li md-src-pos="18702..18733"><code md-src-pos="18705..18733">try, except, else, default</code></li>
+    <li md-src-pos="18734..18759"><code md-src-pos="18737..18759">try, except, default</code></li>
+    <li md-src-pos="18760..18785"><code md-src-pos="18763..18785">try, except, finally</code></li>
+   </ol>
+   <p md-src-pos="18787..18800"><strong md-src-pos="18787..18800">Pytanie 3</strong></p>
+   <p md-src-pos="18802..18882"><span md-src-pos="18802..18882">Jaka jest kolejność wykonywania instrukcji wykorzystywanych w obsłudze wyjątków?</span></p>
+   <ol md-src-pos="18884..19011">
+    <li md-src-pos="18884..18915"><code md-src-pos="18887..18915">try, finally, except, else</code></li>
+    <li md-src-pos="18916..18947"><code md-src-pos="18919..18947">try, else, except, finally</code></li>
+    <li md-src-pos="18948..18979"><code md-src-pos="18951..18979">try, except, else, finally</code></li>
+    <li md-src-pos="18980..19011"><code md-src-pos="18983..19011">try, except, finally, else</code></li>
+   </ol>
+   <p md-src-pos="19013..19026"><strong md-src-pos="19013..19026">Pytanie 4</strong></p>
+   <p md-src-pos="19028..19051"><span md-src-pos="19028..19050">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="19053..19265">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="ZGVmIHZhbGlkYXRlX2FnZShhZ2UpOgogICAgaWYgYWdlIDwgMTg6CiAgICAgICAgWz8/P10gVmFsdWVFcnJvcigiQWdlIG11c3QgYmUgYXQgbGVhc3QgMTghIikKICAgIGVsc2U6CiAgICAgICAgcHJpbnQoIkFnZSBpcyB2YWxpZC4iKQoKCnRyeToKICAgIHZhbGlkYXRlX2FnZSgxMCkKZXhjZXB0IFZhbHVlRXJyb3IgYXMgZToKICAgIHByaW50KGUp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="19053..19265"><span md-src-pos="19053..19063"></span><span md-src-pos="19063..19086"><span style="color: rgb(0, 51, 179);">def</span> validate_age(age):</span>
+<span md-src-pos="19086..19103">    <span style="color: rgb(0, 51, 179);">if</span> age &lt; <span style="color: rgb(23, 80, 235);">18</span>:</span>
+<span md-src-pos="19103..19156">        [???] ValueError(<span style="color: rgb(6, 125, 23);">"Age must be at least 18!"</span>)</span>
+<span md-src-pos="19156..19166">    <span style="color: rgb(0, 51, 179);">else</span>:</span>
+<span md-src-pos="19166..19197">        print(<span style="color: rgb(6, 125, 23);">"Age is valid."</span>)</span>
+<span md-src-pos="19197..19198"></span>
+<span md-src-pos="19198..19199"></span>
+<span md-src-pos="19199..19204"><span style="color: rgb(0, 51, 179);">try</span>:</span>
+<span md-src-pos="19204..19225">    validate_age(<span style="color: rgb(23, 80, 235);">10</span>)</span>
+<span md-src-pos="19225..19249"><span style="color: rgb(0, 51, 179);">except</span> ValueError <span style="color: rgb(0, 51, 179);">as</span> e:</span>
+<span md-src-pos="19249..19262">    print(e)</span>
+<span md-src-pos="19262..19263"></span><span md-src-pos="19262..19265"></span></code></pre>
+   <p md-src-pos="19267..19380"><span md-src-pos="19267..19302">Jakiej instrukcji brakuje w miejscu</span> <code md-src-pos="19303..19310">[???]</code><span md-src-pos="19310..19311">,</span> <span md-src-pos="19312..19323">aby wyjątek</span> <code md-src-pos="19324..19336">ValueError</code> <span md-src-pos="19337..19380">został podniesiony i odpowiednio obsłużony?</span></p>
+   <ol md-src-pos="19382..19429">
+    <li md-src-pos="19382..19391"><code md-src-pos="19385..19391">call</code></li>
+    <li md-src-pos="19392..19402"><code md-src-pos="19395..19402">raise</code></li>
+    <li md-src-pos="19403..19417"><code md-src-pos="19406..19417">exception</code></li>
+    <li md-src-pos="19418..19429"><code md-src-pos="19421..19429">except</code></li>
+   </ol>
+   <p md-src-pos="19431..19444"><strong md-src-pos="19431..19444">Pytanie 5</strong></p>
+   <p md-src-pos="19446..19729"><span md-src-pos="19446..19471">W Pythonie słowo kluczowe</span> <code md-src-pos="19472..19479">[???]</code> <span md-src-pos="19480..19555">jest używane do przeprowadzania kontroli debugowania podczas programowania.</span> <span md-src-pos="19557..19577">Testuje ono warunek,</span> <span md-src-pos="19578..19601">który ma być prawdziwy.</span> <span md-src-pos="19602..19630">Jeśli warunek jest fałszywy,</span> <span md-src-pos="19631..19659">zgłasza błąd AssertionError,</span> <span md-src-pos="19660..19673">sygnalizując,</span> <span md-src-pos="19675..19729">że w kodzie może występować błąd lub problem logiczny.</span></p>
+   <p md-src-pos="19731..19790"><span md-src-pos="19731..19781">Jakie słowo kluczowe powinno się znaleźć w miejscu</span> <code md-src-pos="19782..19789">[???]</code><span md-src-pos="19789..19790">?</span></p>
+   <ol md-src-pos="19792..19837">
+    <li md-src-pos="19792..19802"><code md-src-pos="19795..19802">raise</code></li>
+    <li md-src-pos="19803..19814"><code md-src-pos="19806..19814">except</code></li>
+    <li md-src-pos="19815..19826"><code md-src-pos="19818..19826">assert</code></li>
+    <li md-src-pos="19827..19837"><code md-src-pos="19830..19837">error</code></li>
+   </ol>
+   <h3 id="a-idrozdzial8arozdział-8---operacje-na-plikach" md-src-pos="19839..19898"><a id="rozdzial_8"></a>Rozdział 8 - Operacje na plikach</h3>
+   <p md-src-pos="19900..19913"><strong md-src-pos="19900..19913">Pytanie 1</strong></p>
+   <p md-src-pos="19915..20000"><span md-src-pos="19915..19937">Która funkcja z modułu</span> <code md-src-pos="19938..19942">os</code> <span md-src-pos="19943..20000">pozwala pobrać ścieżkę do aktualnej przestrzeni roboczej?</span></p>
+   <ol md-src-pos="20002..20079">
+    <li md-src-pos="20002..20018"><code md-src-pos="20005..20018">os.getcwd()</code></li>
+    <li md-src-pos="20019..20032"><code md-src-pos="20022..20032">os.cwd()</code></li>
+    <li md-src-pos="20033..20057"><code md-src-pos="20036..20057">os.getworkingpath()</code></li>
+    <li md-src-pos="20058..20079"><code md-src-pos="20061..20079">os.workingpath()</code></li>
+   </ol>
+   <p md-src-pos="20081..20094"><strong md-src-pos="20081..20094">Pytanie 2</strong></p>
+   <p md-src-pos="20096..20176"><span md-src-pos="20096..20118">Która funkcja z modułu</span> <code md-src-pos="20119..20123">os</code> <span md-src-pos="20124..20176">pozwala stworzyć nowy folder w wybranej lokalizacji?</span></p>
+   <ol md-src-pos="20178..20246">
+    <li md-src-pos="20178..20193"><code md-src-pos="20181..20193">os.crdir()</code></li>
+    <li md-src-pos="20194..20207"><code md-src-pos="20197..20207">os.dir()</code></li>
+    <li md-src-pos="20208..20227"><code md-src-pos="20211..20227">os.createdir()</code></li>
+    <li md-src-pos="20228..20246"><code md-src-pos="20231..20246">os.makedirs()</code></li>
+   </ol>
+   <p md-src-pos="20248..20261"><strong md-src-pos="20248..20261">Pytanie 3</strong></p>
+   <p md-src-pos="20263..20383"><span md-src-pos="20263..20271">Załóżmy,</span> <span md-src-pos="20272..20338">że chcemy utworzyć nowy plik w trybie zapisywania do niego treści.</span> <span md-src-pos="20339..20383">Od której z poniższych linii kodu zaczniemy?</span></p>
+   <ol md-src-pos="20385..20563">
+    <li md-src-pos="20385..20430"><code md-src-pos="20388..20430">with open('NewScript.txt', 'a') as file:</code></li>
+    <li md-src-pos="20431..20476"><code md-src-pos="20434..20476">with open('NewScript.txt', 'w') as file:</code></li>
+    <li md-src-pos="20477..20522"><code md-src-pos="20480..20522">with open('NewScript.txt', 'r') as file:</code></li>
+    <li md-src-pos="20523..20563"><code md-src-pos="20526..20563">with open('NewScript.txt') as file:</code></li>
+   </ol>
+   <h3 id="a-idrozdzial9arozdział-9---tworzenie-graficznego-interfejsu-użytkownika-gui" md-src-pos="20565..20655"><a id="rozdzial_9"></a>Rozdział 9 - Tworzenie graficznego interfejsu użytkownika (GUI)</h3>
+   <p md-src-pos="20657..20670"><strong md-src-pos="20657..20670">Pytanie 1</strong></p>
+   <p md-src-pos="20672..20692"><span md-src-pos="20672..20681">Czym jest</span> <em md-src-pos="20682..20691">tkinter</em><span md-src-pos="20691..20692">?</span></p>
+   <ol md-src-pos="20694..21188">
+    <li md-src-pos="20694..20818">To pakiet wchodzący w skład standardowej biblioteki języka Python służący do tworzenia graficznego interfejsu użytkownika</li>
+    <li md-src-pos="20819..20952">To pakiet służący do tworzenia graficznego interfejsu użytkownika, który nie wchodzi w skład standardowej biblioteki języka Python</li>
+    <li md-src-pos="20953..21039">To jeden z pakietów standardowej biblioteki języka Python służący do pracy z czasem</li>
+    <li md-src-pos="21040..21188">To jeden z pakietów standardowej biblioteki języka Python służący do realizowania zadań z zakresu programowania wielowątkowego i asynchronicznego</li>
+   </ol>
+   <p md-src-pos="21190..21203"><strong md-src-pos="21190..21203">Pytanie 2</strong></p>
+   <p md-src-pos="21205..21377"><span md-src-pos="21205..21216">Zakładając,</span> <span md-src-pos="21217..21243">że pierwsza linia skryptu,</span> <span md-src-pos="21244..21246">to</span> <code md-src-pos="21247..21269">import tkinter as tk</code><span md-src-pos="21269..21270">,</span> <span md-src-pos="21271..21326">to które z poniższych rozwiązań pozwala utworzyć główne</span> <span md-src-pos="21328..21366">okno aplikacji korzystającej z pakietu</span> <em md-src-pos="21367..21376">tkinter</em><span md-src-pos="21376..21377">?</span></p>
+   <ol md-src-pos="21379..21469">
+    <li md-src-pos="21379..21402"><code md-src-pos="21382..21402">root = tk.Window()</code></li>
+    <li md-src-pos="21403..21423"><code md-src-pos="21406..21423">root = tk.App()</code></li>
+    <li md-src-pos="21424..21443"><code md-src-pos="21427..21443">root = tk.Tk()</code></li>
+    <li md-src-pos="21444..21469"><code md-src-pos="21447..21469">root = tk.mainloop()</code></li>
+   </ol>
+   <p md-src-pos="21471..21484"><strong md-src-pos="21471..21484">Pytanie 3</strong></p>
+   <p md-src-pos="21486..21577"><span md-src-pos="21486..21566">Która z funkcji pozwala uruchomić pętlę główną aplikacji korzystającej z pakietu</span> <em md-src-pos="21567..21576">tkinter</em><span md-src-pos="21576..21577">?</span></p>
+   <ol md-src-pos="21579..21631">
+    <li md-src-pos="21579..21590"><code md-src-pos="21582..21590">main()</code></li>
+    <li md-src-pos="21591..21606"><code md-src-pos="21594..21606">mainloop()</code></li>
+    <li md-src-pos="21607..21618"><code md-src-pos="21610..21618">root()</code></li>
+    <li md-src-pos="21619..21631"><code md-src-pos="21622..21631">start()</code></li>
+   </ol>
+   <p md-src-pos="21633..21646"><strong md-src-pos="21633..21646">Pytanie 4</strong></p>
+   <p md-src-pos="21648..21754"><span md-src-pos="21648..21666">Który z poniższych</span> <em md-src-pos="21667..21677">widgetów</em> <span md-src-pos="21678..21708">nie należy do głównego pakietu</span> <em md-src-pos="21709..21718">tkinter</em><span md-src-pos="21718..21719">,</span> <span md-src-pos="21720..21747">ale należy za do podpakietu</span> <em md-src-pos="21748..21753">ttk</em><span md-src-pos="21753..21754">?</span></p>
+   <ol md-src-pos="21756..21832">
+    <li md-src-pos="21756..21767"><code md-src-pos="21759..21767">Button</code></li>
+    <li md-src-pos="21768..21784"><code md-src-pos="21771..21784">Radiobutton</code></li>
+    <li md-src-pos="21785..21798"><code md-src-pos="21788..21798">Combobox</code></li>
+    <li md-src-pos="21799..21832">Odpowiedzi B i C są prawidłowe</li>
+   </ol>
+   <p md-src-pos="21834..21847"><strong md-src-pos="21834..21847">Pytanie 5</strong></p>
+   <p md-src-pos="21849..21936"><span md-src-pos="21849..21936">Która z poniższych funkcji pozwala wymusić początkowe rozmiary głównego okna aplikacji?</span></p>
+   <ol md-src-pos="21938..22005">
+    <li md-src-pos="21938..21955"><code md-src-pos="21941..21955">dimensions()</code></li>
+    <li md-src-pos="21956..21977"><code md-src-pos="21959..21977">widthandheight()</code></li>
+    <li md-src-pos="21978..21989"><code md-src-pos="21981..21989">size()</code></li>
+    <li md-src-pos="21990..22005"><code md-src-pos="21993..22005">geometry()</code></li>
+   </ol>
+   <p md-src-pos="22007..22020"><strong md-src-pos="22007..22020">Pytanie 6</strong></p>
+   <p md-src-pos="22022..22076"><span md-src-pos="22022..22061">Trzy główne menedżery układu w pakiecie</span> <em md-src-pos="22062..22071">tkinter</em><span md-src-pos="22071..22072">,</span> <span md-src-pos="22073..22075">to</span>:</p>
+   <ol md-src-pos="22078..22171">
+    <li md-src-pos="22078..22100"><em md-src-pos="22081..22100">pack, place, grid</em></li>
+    <li md-src-pos="22101..22123"><em md-src-pos="22104..22123">pack, frame, grid</em></li>
+    <li md-src-pos="22124..22147"><em md-src-pos="22127..22147">frame, place, grid</em></li>
+    <li md-src-pos="22148..22171"><em md-src-pos="22151..22171">pack, frame, place</em></li>
+   </ol>
+   <p md-src-pos="22173..22186"><strong md-src-pos="22173..22186">Pytanie 7</strong></p>
+   <p md-src-pos="22188..22211"><span md-src-pos="22188..22210">Dany jest kod źródłowy</span>:</p>
+   <pre class="code-fence" md-src-pos="22213..22377">
+    <div class="code-fence-highlighter-copy-button" data-fence-content="aW1wb3J0IHRraW50ZXIgYXMgdGsKCnJvb3QgPSB0ay5UaygpCgpkZWYgY2xpY2soKToKICAgcHJpbnQoIkknbSBCYXRtYW4hIikKCmJ1dHRvbiA9IHRrLkJ1dHRvbih0ZXh0PSJDbGljayBNZSEiLCBbPz8/XSkKYnV0dG9uLnBhY2soKQoKcm9vdC5tYWlubG9vcCgp">
+  <img class="code-fence-highlighter-copy-button-icon">
+
+    </div><code class="language-python" md-src-pos="22213..22377"><span md-src-pos="22213..22223"></span><span md-src-pos="22223..22244"><span style="color: rgb(0, 51, 179);">import</span> tkinter <span style="color: rgb(0, 51, 179);">as</span> tk</span>
+<span md-src-pos="22244..22245"></span>
+<span md-src-pos="22245..22260">root = tk.Tk()</span>
+<span md-src-pos="22260..22261"></span>
+<span md-src-pos="22261..22274"><span style="color: rgb(0, 51, 179);">def</span> click():</span>
+<span md-src-pos="22274..22298">   print(<span style="color: rgb(6, 125, 23);">"I'm Batman!"</span>)</span>
+<span md-src-pos="22298..22299"></span>
+<span md-src-pos="22299..22343">button = tk.Button(text=<span style="color: rgb(6, 125, 23);">"Click Me!"</span>, [???])</span>
+<span md-src-pos="22343..22357">button.pack()</span>
+<span md-src-pos="22357..22358"></span>
+<span md-src-pos="22358..22374">root.mainloop()</span>
+<span md-src-pos="22374..22375"></span><span md-src-pos="22374..22377"></span></code></pre>
+   <p md-src-pos="22379..22516"><span md-src-pos="22379..22406">Co należy wstawić w miejscu</span> <code md-src-pos="22407..22414">[???]</code><span md-src-pos="22414..22415">,</span> <span md-src-pos="22416..22467">aby po uruchomieniu aplikacji naciśnięcie przycisku</span> <code md-src-pos="22468..22476">button</code> <span md-src-pos="22477..22505">powodowało wywołanie funkcji</span> <code md-src-pos="22506..22515">click()</code><span md-src-pos="22515..22516">?</span></p>
+   <ol md-src-pos="22518..22593">
+    <li md-src-pos="22518..22535"><code md-src-pos="22521..22535">action=click</code></li>
+    <li md-src-pos="22536..22554"><code md-src-pos="22539..22554">command=click</code></li>
+    <li md-src-pos="22555..22569"><code md-src-pos="22558..22569">run=click</code></li>
+    <li md-src-pos="22570..22593"><code md-src-pos="22573..22593">event_handle=click</code></li>
+   </ol>
+   <h3 id="a-idrozdzial10arozdział-10---inne" md-src-pos="22595..22641"><a id="rozdzial_10"></a>Rozdział 10 - Inne</h3>
+   <p md-src-pos="22643..22656"><strong md-src-pos="22643..22656">Pytanie 1</strong></p>
+   <p md-src-pos="22658..22697"><span md-src-pos="22658..22697">Czym jest dokumentacja kodu źródłowego?</span></p>
+   <ol md-src-pos="22699..23165">
+    <li md-src-pos="22699..22820">Zestaw pisemnych materiałów i komentarzy, które dostarczają informacji o programie, jego modułach, klasach i funkcjach</li>
+    <li md-src-pos="22821..22930">Proces sprawdzania i testowania kodu źródłowego w celu wyłapania w nim ewentualnych błędów i niedociągnięć</li>
+    <li md-src-pos="22931..23058">Kompletny zbiór grafik i diagramów przedstawiających działanie programu, ułatwiający wizualizację procesów programistycznych</li>
+    <li md-src-pos="23059..23165">Sekretny kod lub tajny skrypt używany do ukrywania prawdziwych zamiarów programisty przed użytkownikami</li>
+   </ol>
+   <p md-src-pos="23167..23180"><strong md-src-pos="23167..23180">Pytanie 2</strong></p>
+   <p md-src-pos="23182..23220"><span md-src-pos="23182..23220">Czym jest debugowanie kodu źródłowego?</span></p>
+   <ol md-src-pos="23222..23778">
+    <li md-src-pos="23222..23362">Instrukcje lub polecenia umożliwiające wprowadzanie zamierzonego błędu w celu zrozumienia, jak program reaguje na różne sytuacje awaryjne</li>
+    <li md-src-pos="23363..23515">Specjalny rodzaj kodu, który pozwala programiście śledzić działanie programu w czasie rzeczywistym i dostarcza dodatkowych informacji diagnostycznych</li>
+    <li md-src-pos="23516..23658">Proces analizy, identyfikacji i naprawy błędów (tzw. <em md-src-pos="23572..23579">bugów</em>) w kodzie źródłowym programu w celu zapewnienia poprawnego działania aplikacji</li>
+    <li md-src-pos="23659..23778">Proces, w którym programista umożliwia użytkownikom testowanie oprogramowania w celu znalezienia i zgłaszania błędów</li>
+   </ol>
+   <p md-src-pos="23780..23793"><strong md-src-pos="23780..23793">Pytanie 3</strong></p>
+   <p md-src-pos="23795..23874"><span md-src-pos="23795..23804">Czym jest</span> <em md-src-pos="23805..23824">Garbage Collector</em> <span md-src-pos="23825..23874">w języku Python i jakie jest jego główne zadanie?</span></p>
+   <ol md-src-pos="23876..24492">
+    <li md-src-pos="23876..24012">Jest to funkcja w Pythonie, która zbiera nieużywane kody źródłowe i przenosi je do archiwum, aby mogły być wykorzystane w przyszłości</li>
+    <li md-src-pos="24013..24154">Jest to narzędzie do automatycznego generowania dokumentacji kodu, które śledzi wykorzystanie poszczególnych funkcji i modułów w programie</li>
+    <li md-src-pos="24155..24312">Jest to rodzaj kreatora kodu, który automatycznie generuje kod dla różnych części aplikacji na podstawie analizy i prognozowania potrzeb programistycznych</li>
+    <li md-src-pos="24313..24492">Jest to mechanizm automatycznego zarządzania pamięcią w języku Python, który śledzi i usuwa nieużywane obiekty z pamięci w celu zwolnienia zasobów i uniknięcia wycieków pamięci</li>
+   </ol>
+  </div>
+ </body>
+</html>
